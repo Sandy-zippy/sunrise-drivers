@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sunrise Drivers: Verified Professional Chauffeurs & Driver Placement</title>
+  <meta name="description" content="Find verified, trained professional drivers in Hyderabad & Bangalore. Background-checked, monthly care plans starting ₹999/mo. 6,000+ families trust Sunrise Drivers.">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0A0A0A;
+      --bg2: #111111;
+      --bg3: #1A1A1A;
+      --bg4: #222222;
+      --amber: #F7941D;
+      --amber2: #E8860B;
+      --amber3: #FDB813;
+      --white: #E5E5E5;
+      --gray: #888888;
+      --gray2: #555555;
+      --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--bg); color: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; background: rgba(10,10,10,0.91); backdrop-filter: blur(16px); z-index: 999; border-bottom: 1px solid var(--bg3); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 6px 24px; max-width: 1200px; margin: 0 auto; }
+    .nav-logo { display: flex; align-items: center; gap: 8px; }
+    .nav-logo img { height: 36px; width: auto; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--gray); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .btn-primary { background: linear-gradient(135deg, var(--amber), var(--amber2)); color: #000; font-weight: 700; padding: 10px 24px; border-radius: 50px; font-size: 14px; transition: transform 0.2s, box-shadow 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(247,148,29,0.3); }
+    .btn-outline { border: 1px solid rgba(247,148,29,0.4); color: var(--amber); font-weight: 600; padding: 10px 24px; border-radius: 50px; font-size: 14px; transition: border-color 0.2s, background 0.2s; }
+    .btn-outline:hover { border-color: var(--amber); background: rgba(247,148,29,0.08); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: 0.3s; }
+
+    /* HERO */
+    .hero { padding: 80px 24px 60px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; max-width: 1200px; margin: 0 auto; }
+    .hero h1 { font-weight: 800; font-size: clamp(32px, 5vw, 52px); line-height: 1.15; margin-bottom: 20px; }
+    .hero h1 .accent { color: var(--amber); }
+    .hero-sub { color: var(--gray); font-size: 15px; line-height: 1.7; margin-bottom: 28px; max-width: 480px; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+    .stats { display: flex; gap: 32px; }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 20px; font-weight: 800; color: var(--amber); }
+    .stat-label { font-size: 12px; color: var(--gray); margin-top: 2px; }
+
+    /* SERVICE TABS */
+    .service-tabs { display: flex; flex-direction: column; gap: 16px; }
+    .service-card { background: var(--bg3); border: 1px solid var(--bg4); border-radius: 20px; padding: 32px; min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transition: 0.4s; }
+    .service-card .icon { font-size: 48px; margin-bottom: 12px; }
+    .service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .service-card p { font-size: 13px; color: var(--gray); }
+    .tab-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tab-btn { padding: 10px 18px; border-radius: 12px; font-size: 13px; font-weight: 600; background: var(--bg3); border: 1px solid var(--bg4); color: var(--gray); transition: 0.2s; }
+    .tab-btn.active { background: rgba(247,148,29,0.12); border-color: rgba(247,148,29,0.3); color: var(--amber); }
+
+    /* SECTIONS */
+    section { padding: 72px 24px; }
+    .section-label { font-size: 12px; font-weight: 600; color: var(--amber); text-transform: uppercase; letter-spacing: 3px; text-align: center; }
+    .section-title { font-weight: 800; font-size: clamp(24px, 4vw, 36px); text-align: center; margin-top: 12px; margin-bottom: 40px; }
+    .section-sub { text-align: center; color: var(--gray); font-size: 15px; margin-top: -28px; margin-bottom: 40px; }
+
+    /* HOW IT WORKS */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
+    .step-card { background: var(--bg2); border: 1px solid var(--bg4); border-radius: 16px; padding: 28px 24px; position: relative; }
+    .step-num { font-size: 36px; font-weight: 800; color: rgba(247,148,29,0.15); margin-bottom: 12px; }
+    .step-card h3 { font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+    .step-card p { font-size: 13px; color: var(--gray); line-height: 1.7; }
+
+    /* FEATURES */
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
+    .feature-card { background: var(--bg2); border: 1px solid var(--bg4); border-radius: 16px; padding: 28px 24px; }
+    .feature-card .icon { font-size: 32px; margin-bottom: 12px; }
+    .feature-card h3 { font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+    .feature-card p { font-size: 13px; color: var(--gray); line-height: 1.7; }
+
+    /* PLANS */
+    .plans-note { text-align: center; color: var(--gray); font-size: 14px; margin-bottom: 32px; }
+    .plans-note strong { color: var(--white); }
+    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
+    .plan-card { background: var(--bg2); border: 1px solid var(--bg4); border-radius: 16px; padding: 28px 24px; display: flex; flex-direction: column; }
+    .plan-card.popular { border-color: rgba(247,148,29,0.4); position: relative; }
+    .plan-badge { position: absolute; top: -10px; right: 20px; background: linear-gradient(135deg, var(--amber), var(--amber2)); color: #000; font-size: 10px; font-weight: 800; padding: 4px 12px; border-radius: 6px; letter-spacing: 1px; }
+    .plan-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .plan-price { font-size: 28px; font-weight: 800; color: var(--amber); }
+    .plan-price span { font-size: 14px; font-weight: 500; color: var(--gray); }
+    .plan-billing { font-size: 11px; color: var(--gray2); margin-bottom: 20px; }
+    .plan-features { list-style: none; flex: 1; }
+    .plan-features li { font-size: 13px; color: var(--gray); padding: 6px 0; display: flex; align-items: flex-start; gap: 8px; }
+    .plan-features li::before { content: '✓'; color: var(--amber); font-weight: 700; flex-shrink: 0; }
+    .plan-cta { text-align: center; margin-top: 40px; }
+    .plan-cta p { font-size: 12px; color: var(--gray2); margin-top: 8px; }
+
+    /* COVERAGE */
+    .coverage-wrap { max-width: 800px; margin: 0 auto; }
+    .city-tabs { display: flex; gap: 12px; justify-content: center; margin-bottom: 24px; }
+    .city-tab { padding: 10px 24px; border-radius: 12px; font-size: 14px; font-weight: 600; background: var(--bg3); border: 1px solid var(--bg4); color: var(--gray); transition: 0.2s; }
+    .city-tab.active { background: rgba(247,148,29,0.12); border-color: rgba(247,148,29,0.3); color: var(--amber); }
+    .area-panel { display: none; }
+    .area-panel.active { display: block; }
+    .area-tabs-wrap { display: flex; gap: 20px; }
+    .area-tabs { display: flex; flex-direction: column; gap: 4px; min-width: 160px; flex-shrink: 0; }
+    .area-tab { padding: 10px 16px; border-radius: 10px; font-size: 13px; font-weight: 600; text-align: left; color: var(--gray); transition: 0.2s; }
+    .area-tab.active { background: rgba(247,148,29,0.12); color: var(--amber); }
+    .area-content { flex: 1; background: var(--bg3); border-radius: 16px; padding: 24px; border: 1px solid var(--bg4); }
+    .area-content h4 { font-weight: 700; margin-bottom: 14px; color: var(--amber); }
+    .area-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .area-chip { background: var(--bg2); padding: 6px 14px; border-radius: 8px; font-size: 13px; border: 1px solid var(--bg4); color: var(--white); }
+    .area-time { margin-top: 16px; font-size: 13px; color: var(--gray2); }
+    .area-time strong { color: var(--amber); }
+
+    /* TESTIMONIAL */
+    .testimonial-section { background: var(--bg2); }
+    .testimonial-card { max-width: 700px; margin: 0 auto; background: var(--bg3); border: 1px solid rgba(247,148,29,0.125); border-radius: 16px; padding: 32px; }
+    .testimonial-quote { font-size: 36px; color: var(--amber); line-height: 1; margin-bottom: 8px; }
+    .testimonial-text { font-size: 15px; line-height: 1.8; font-style: italic; margin-bottom: 20px; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--amber), var(--amber3)); display: flex; align-items: center; justify-content: center; color: #000; font-weight: 800; font-size: 16px; }
+    .testimonial-name { font-weight: 700; font-size: 13px; }
+    .testimonial-role { color: var(--gray); font-size: 11px; }
+    .dots { display: flex; gap: 8px; justify-content: center; margin-top: 16px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--bg4); transition: 0.2s; cursor: pointer; }
+    .dot.active { background: var(--amber); width: 24px; border-radius: 4px; }
+
+    /* FORM */
+    .form-section { max-width: 640px; margin: 0 auto; }
+    .form-header { text-align: center; margin-bottom: 32px; }
+    .form-header img { height: 48px; margin-bottom: 16px; }
+    .form-header .label { font-size: 12px; font-weight: 600; color: var(--amber); text-transform: uppercase; letter-spacing: 3px; }
+    .form-header h2 { font-weight: 800; font-size: clamp(24px, 4vw, 36px); margin-top: 8px; }
+    .form-header p { color: var(--gray); font-size: 14px; margin-top: 8px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-size: 12px; font-weight: 600; color: var(--gray); }
+    .form-group label .req { color: var(--amber); }
+    .form-group input, .form-group select { background: var(--bg2); border: 1px solid var(--bg4); border-radius: 10px; padding: 12px 16px; color: var(--white); font-size: 14px; font-family: var(--font); outline: none; transition: border-color 0.2s; }
+    .form-group input:focus, .form-group select:focus { border-color: var(--amber); }
+    .form-group input::placeholder { color: var(--gray2); }
+    .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+    .driver-type-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .driver-type-card { background: var(--bg2); border: 2px solid var(--bg4); border-radius: 12px; padding: 16px; cursor: pointer; transition: 0.2s; text-align: center; }
+    .driver-type-card.selected { border-color: var(--amber); background: rgba(247,148,29,0.06); }
+    .driver-type-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .driver-type-card p { font-size: 11px; color: var(--gray); line-height: 1.4; }
+    .driver-type-card input { display: none; }
+    .form-submit { width: 100%; margin-top: 20px; padding: 14px; font-size: 16px; }
+    .form-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+    .form-privacy { text-align: center; font-size: 11px; color: var(--gray2); margin-top: 12px; }
+    .form-success { text-align: center; padding: 48px 24px; display: none; }
+    .form-success .check { font-size: 56px; margin-bottom: 16px; }
+    .form-success h3 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+    .form-success p { color: var(--gray); font-size: 14px; }
+
+    /* FOOTER */
+    footer { padding: 48px 24px; border-top: 1px solid var(--bg3); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; justify-content: center; margin-bottom: 12px; }
+    .footer-logo img { height: 28px; }
+    .footer-company { font-weight: 700; font-size: 14px; letter-spacing: 1px; }
+    .footer-tagline { font-size: 13px; color: var(--gray); margin-bottom: 16px; }
+    .footer-address { font-size: 12px; color: var(--gray2); margin-bottom: 8px; }
+    .footer-legal { font-size: 11px; color: var(--gray2); margin-bottom: 16px; }
+    .footer-copy { font-size: 11px; color: var(--gray2); }
+    .footer-copy a { color: var(--amber); }
+
+    /* FLOATING CTAs */
+    .floating-ctas { position: fixed; bottom: 24px; right: 24px; display: flex; flex-direction: column; gap: 12px; z-index: 998; }
+    .float-btn { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.4); transition: transform 0.2s; }
+    .float-btn:hover { transform: scale(1.1); }
+    .float-phone { background: linear-gradient(135deg, var(--amber), var(--amber2)); }
+    .float-whatsapp { background: #25D366; }
+
+    /* ANIMATIONS */
+    .fade-up { opacity: 0; transform: translateY(36px); transition: opacity 0.7s, transform 0.7s; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up-delay { transition-delay: 0.15s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-sub { margin: 0 auto 28px; }
+      .hero-ctas { justify-content: center; }
+      .stats { justify-content: center; }
+      .service-tabs { order: -1; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .features { grid-template-columns: repeat(2, 1fr); }
+      .plans-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,10,0.97); padding: 24px; gap: 20px; border-bottom: 1px solid var(--bg3); }
+      .area-tabs-wrap { flex-direction: column; }
+      .area-tabs { flex-direction: row; flex-wrap: wrap; min-width: 0; }
+    }
+    @media (max-width: 600px) {
+      .steps { grid-template-columns: 1fr; }
+      .features { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .driver-type-cards { grid-template-columns: 1fr; }
+      section { padding: 56px 16px; }
+      .hero { padding: 48px 16px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="assets/logo.png" alt="Sunrise Drivers">
+    </a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#why">Why Sunrise Drivers</a></li>
+      <li><a href="#plans">Care Plans</a></li>
+      <li><a href="#start" class="btn-primary">Find My Driver &rarr;</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <h1 class="fade-up">Find the Right<br><span class="accent">Driver for You.</span><br>Verified. Trained. Monthly.</h1>
+      <p class="hero-sub fade-up fade-up-delay">Every Sunrise driver is background-verified, professionally trained, and backed by our Care Plan so you never worry about finding, managing, or replacing a driver again.</p>
+      <div class="hero-ctas fade-up fade-up-delay">
+        <a href="#start" class="btn-primary">Find My Driver &rarr;</a>
+        <a href="#how" class="btn-outline">How It Works</a>
+      </div>
+      <div class="stats fade-up fade-up-delay">
+        <div class="stat-item">
+          <div class="stat-num">10+ Yrs</div>
+          <div class="stat-label">Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">6,000+</div>
+          <div class="stat-label">Families</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4.8 ★</div>
+          <div class="stat-label">JustDial</div>
+        </div>
+      </div>
+    </div>
+    <div class="service-tabs fade-up">
+      <div class="service-card" id="service-display">
+        <div class="icon">🚗</div>
+        <h3>Personal Drivers</h3>
+        <p>For families &amp; professionals</p>
+      </div>
+      <div class="tab-btns">
+        <button class="tab-btn active" onclick="showService(0)">🚗 Personal</button>
+        <button class="tab-btn" onclick="showService(1)">🏢 Corporate</button>
+        <button class="tab-btn" onclick="showService(2)">⭐ Valet</button>
+        <button class="tab-btn" onclick="showService(3)">🔒 Verified</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="background: var(--bg2);">
+  <div class="container">
+    <div class="section-label fade-up">Process</div>
+    <h2 class="section-title fade-up">How It Works</h2>
+    <div class="steps">
+      <div class="step-card fade-up">
+        <div class="step-num">01</div>
+        <h3>Share Your Requirement</h3>
+        <p>Tell us your city, vehicle type, and duty hours needed.</p>
+      </div>
+      <div class="step-card fade-up fade-up-delay">
+        <div class="step-num">02</div>
+        <h3>We Source &amp; Verify</h3>
+        <p>We match from our 30,000+ driver network and run background checks.</p>
+      </div>
+      <div class="step-card fade-up fade-up-delay">
+        <div class="step-num">03</div>
+        <h3>Driver Assigned</h3>
+        <p>Your verified driver starts. Choose a Care Plan for ongoing coverage.</p>
+      </div>
+      <div class="step-card fade-up fade-up-delay">
+        <div class="step-num">04</div>
+        <h3>Monthly Auto-Debit</h3>
+        <p>UPI AutoPay handles billing. We handle replacements and support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SUNRISE DRIVERS -->
+<section id="why">
+  <div class="container">
+    <div class="section-label fade-up">Why Sunrise Drivers</div>
+    <h2 class="section-title fade-up">Not Just a Driver. A Certified Professional.</h2>
+    <div class="features">
+      <div class="feature-card fade-up">
+        <div class="icon">🔍</div>
+        <h3>Background Verified</h3>
+        <p>Police verification, identity checks, reference validation before every assignment.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="icon">🎓</div>
+        <h3>Professionally Trained</h3>
+        <p>Road discipline, vehicle handling, professional conduct, client communication.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="icon">⚡</div>
+        <h3>Fast Assignment</h3>
+        <p>Hyderabad: 3-4 working days. Bangalore: 7-10 days. Same-day temp replacements.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="icon">🔄</div>
+        <h3>Free Replacements</h3>
+        <p>Driver not the right fit? We replace at no cost, included in every care plan.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="icon">📱</div>
+        <h3>UPI Auto-Debit</h3>
+        <p>Monthly care plan via UPI AutoPay. Set once, no manual payments ever.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="icon">🤝</div>
+        <h3>Zero Commission</h3>
+        <p>You pay driver salary directly. We charge only placement fee + care plan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARE PLANS -->
+<section id="plans" style="background: var(--bg2);">
+  <div class="container">
+    <div class="section-label fade-up">Care Plans</div>
+    <h2 class="section-title fade-up">Choose the Right Coverage</h2>
+    <p class="plans-note fade-up">One-time placement fee of <strong>&#8377;9,999</strong> + monthly care plan below.</p>
+    <div class="plans-grid">
+      <!-- BASIC -->
+      <div class="plan-card fade-up">
+        <div class="plan-name">Basic</div>
+        <div class="plan-price">&#8377;999<span>/month</span></div>
+        <div class="plan-billing">Via UPI AutoPay</div>
+        <ul class="plan-features">
+          <li>Verified &amp; trained driver</li>
+          <li>2 free replacements / year</li>
+          <li>Monthly attendance reports</li>
+          <li>WhatsApp support (business hrs)</li>
+          <li>15-day post-onboarding check-in</li>
+        </ul>
+      </div>
+      <!-- STANDARD -->
+      <div class="plan-card popular fade-up">
+        <div class="plan-badge">POPULAR</div>
+        <div class="plan-name">Standard</div>
+        <div class="plan-price">&#8377;1,499<span>/month</span></div>
+        <div class="plan-billing">Via UPI AutoPay</div>
+        <ul class="plan-features">
+          <li>Everything in Basic, plus:</li>
+          <li>4 free replacements / year</li>
+          <li>Priority replacement in 24 hrs</li>
+          <li>Monthly performance reviews</li>
+          <li>Quarterly driver training refresh</li>
+          <li>Dedicated WhatsApp support</li>
+        </ul>
+      </div>
+      <!-- PREMIUM -->
+      <div class="plan-card fade-up">
+        <div class="plan-badge" style="background: linear-gradient(135deg, #666, #444);">ALL-IN</div>
+        <div class="plan-name">Premium</div>
+        <div class="plan-price">&#8377;1,999<span>/month</span></div>
+        <div class="plan-billing">Via UPI AutoPay</div>
+        <ul class="plan-features">
+          <li>Everything in Standard, plus:</li>
+          <li>Unlimited replacements</li>
+          <li>Backup driver on-call (48hr notice)</li>
+          <li>Dedicated account manager</li>
+          <li>Real-time driver tracking</li>
+          <li>Priority onboarding (2 days)</li>
+          <li>Annual performance report</li>
+        </ul>
+      </div>
+    </div>
+    <div class="plan-cta fade-up">
+      <a href="#start" class="btn-primary">Find My Driver &rarr;</a>
+      <p>Plan selection after we confirm your requirements</p>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section id="areas">
+  <div class="container">
+    <div class="section-label fade-up">Coverage</div>
+    <h2 class="section-title fade-up">Two Cities. One Standard.</h2>
+    <div class="coverage-wrap fade-up">
+      <div class="city-tabs">
+        <button class="city-tab active" onclick="switchCity('hyd')">📍 Hyderabad</button>
+        <button class="city-tab" onclick="switchCity('blr')">📍 Bangalore</button>
+      </div>
+
+      <!-- HYDERABAD -->
+      <div class="area-panel active" id="city-hyd">
+        <div class="area-tabs-wrap">
+          <div class="area-tabs" id="hyd-tabs">
+            <button class="area-tab active" onclick="switchArea('hyd', 0)">HITEC City &amp; IT</button>
+            <button class="area-tab" onclick="switchArea('hyd', 1)">Central Hyderabad</button>
+            <button class="area-tab" onclick="switchArea('hyd', 2)">Banjara &amp; Jubilee</button>
+            <button class="area-tab" onclick="switchArea('hyd', 3)">Secunderabad</button>
+            <button class="area-tab" onclick="switchArea('hyd', 4)">North Zone</button>
+            <button class="area-tab" onclick="switchArea('hyd', 5)">South &amp; East</button>
+          </div>
+          <div class="area-content" id="hyd-content">
+            <h4>HITEC City &amp; IT</h4>
+            <div class="area-chips">
+              <span class="area-chip">Gachibowli</span>
+              <span class="area-chip">HITEC City</span>
+              <span class="area-chip">Madhapur</span>
+              <span class="area-chip">Kondapur</span>
+              <span class="area-chip">Manikonda</span>
+              <span class="area-chip">Financial District</span>
+            </div>
+            <p class="area-time">⚡ Assignment: <strong>3-4 working days</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BANGALORE -->
+      <div class="area-panel" id="city-blr">
+        <div class="area-tabs-wrap">
+          <div class="area-tabs" id="blr-tabs">
+            <button class="area-tab active" onclick="switchArea('blr', 0)">Whitefield &amp; IT</button>
+            <button class="area-tab" onclick="switchArea('blr', 1)">Koramangala &amp; HSR</button>
+            <button class="area-tab" onclick="switchArea('blr', 2)">Indiranagar &amp; MG Road</button>
+            <button class="area-tab" onclick="switchArea('blr', 3)">Electronic City</button>
+            <button class="area-tab" onclick="switchArea('blr', 4)">North Bangalore</button>
+            <button class="area-tab" onclick="switchArea('blr', 5)">South Bangalore</button>
+          </div>
+          <div class="area-content" id="blr-content">
+            <h4>Whitefield &amp; IT</h4>
+            <div class="area-chips">
+              <span class="area-chip">Whitefield</span>
+              <span class="area-chip">ITPL</span>
+              <span class="area-chip">Marathahalli</span>
+              <span class="area-chip">Brookefield</span>
+              <span class="area-chip">Varthur</span>
+              <span class="area-chip">Kadugodi</span>
+            </div>
+            <p class="area-time">⚡ Assignment: <strong>7-10 working days</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section id="trust" class="testimonial-section">
+  <div class="container">
+    <div class="section-label fade-up">Client Stories</div>
+    <h2 class="section-title fade-up">Trusted by Leaders</h2>
+    <div class="fade-up">
+      <div class="testimonial-card" id="testimonial-display">
+        <div class="testimonial-quote">&ldquo;</div>
+        <p class="testimonial-text">Mr. Jaipal responded the very next day with a highly experienced, disciplined driver. Extremely satisfied with the professionalism.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">Z</div>
+          <div>
+            <div class="testimonial-name">Zaheer Abbas Syed</div>
+            <div class="testimonial-role">CEO, Loan Genie</div>
+          </div>
+        </div>
+      </div>
+      <div class="dots">
+        <div class="dot active" onclick="showTestimonial(0)"></div>
+        <div class="dot" onclick="showTestimonial(1)"></div>
+        <div class="dot" onclick="showTestimonial(2)"></div>
+        <div class="dot" onclick="showTestimonial(3)"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD FORM -->
+<section id="start">
+  <div class="form-section">
+    <div class="form-header fade-up">
+      <img src="assets/logo.png" alt="Sunrise Drivers">
+      <div class="label">Find My Driver</div>
+      <h2>Tell Us What You Need</h2>
+      <p>Fill in your details. We reach out within 2 hours.</p>
+    </div>
+    <form id="lead-form" class="fade-up">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" name="fullName" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label>Phone <span class="req">*</span></label>
+          <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+        </div>
+        <div class="form-group">
+          <label>City <span class="req">*</span></label>
+          <select name="city" required>
+            <option value="Hyderabad" selected>Hyderabad</option>
+            <option value="Bangalore">Bangalore</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Area</label>
+          <input type="text" name="area" placeholder="e.g. Banjara Hills">
+        </div>
+        <div class="form-group">
+          <label>Vehicle <span class="req">*</span></label>
+          <select name="vehicle" required>
+            <option value="" disabled selected>Select</option>
+            <option value="Sedan">Sedan</option>
+            <option value="SUV">SUV</option>
+            <option value="Hatchback">Hatchback</option>
+            <option value="Luxury">Luxury</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Duty Hours</label>
+          <select name="dutyHours">
+            <option value="" disabled selected>Select</option>
+            <option value="8 hours">8 hours</option>
+            <option value="10 hours">10 hours</option>
+            <option value="12 hours">12 hours</option>
+            <option value="Flexible">Flexible</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Driver Type <span class="req">*</span></label>
+          <div class="driver-type-cards">
+            <label class="driver-type-card selected" onclick="selectDriverType(this)">
+              <input type="radio" name="driverType" value="Professional" checked>
+              <h4>Professional Driver</h4>
+              <p>Trained, verified &amp; experienced personal driver</p>
+            </label>
+            <label class="driver-type-card" onclick="selectDriverType(this)">
+              <input type="radio" name="driverType" value="Premium">
+              <h4>Premium Driver</h4>
+              <p>Well-groomed, safari uniform, formal shoes, executive presentation</p>
+            </label>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn-primary form-submit">Find My Driver &rarr;</button>
+      <p class="form-privacy">🔒 Secure. Only used to contact you about driver services.</p>
+    </form>
+    <div class="form-success" id="form-success">
+      <div class="check">✅</div>
+      <h3>We Got Your Details!</h3>
+      <p>Our team will reach out within 2 hours to confirm your requirement and assign a verified driver.</p>
+      <p style="margin-top: 16px;"><a href="https://wa.me/917997777265" class="btn-primary" style="margin-top: 12px;">Chat on WhatsApp &rarr;</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="assets/logo.png" alt="Sunrise Drivers">
+      <span class="footer-company">SUNRISE DRIVERS LLP</span>
+    </div>
+    <p class="footer-tagline">Professional driver placement since 2013. Trusted by 6,000+ families.</p>
+    <p class="footer-address">3rd Floor, 6-3-348/B/401, Banjara Hills, Hyderabad - 500034</p>
+    <p class="footer-legal">GSTIN: 36AFBFS5664L1ZH &nbsp;|&nbsp; PAN: AFBFS5664L</p>
+    <p class="footer-copy">&copy; 2026 Sunrise Drivers LLP &nbsp;&middot;&nbsp; Powered by <a href="https://zippyscale.com" target="_blank">ZippyScale</a></p>
+  </div>
+</footer>
+
+<!-- FLOATING CTAs -->
+<div class="floating-ctas">
+  <a href="tel:+917997777265" class="float-btn float-phone" aria-label="Call">📞</a>
+  <a href="https://wa.me/917997777265" target="_blank" class="float-btn float-whatsapp" aria-label="WhatsApp">💬</a>
+</div>
+
+<script>
+// Service tabs data
+const services = [
+  { icon: '🚗', title: 'Personal Drivers', desc: 'For families & professionals' },
+  { icon: '🏢', title: 'Corporate Chauffeurs', desc: 'For businesses & executives' },
+  { icon: '⭐', title: 'Valet Services', desc: 'For events & establishments' },
+  { icon: '🔒', title: 'Verified & Trained', desc: 'Background checked. Always.' }
+];
+function showService(i) {
+  const d = document.getElementById('service-display');
+  d.querySelector('.icon').textContent = services[i].icon;
+  d.querySelector('h3').textContent = services[i].title;
+  d.querySelector('p').textContent = services[i].desc;
+  document.querySelectorAll('.tab-btn').forEach((b, j) => b.classList.toggle('active', j === i));
+}
+
+// City tabs
+function switchCity(city) {
+  document.querySelectorAll('.area-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('city-' + city).classList.add('active');
+  document.querySelectorAll('.city-tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+// Area data
+const areaData = {
+  hyd: [
+    { title: 'HITEC City & IT', areas: ['Gachibowli','HITEC City','Madhapur','Kondapur','Manikonda','Financial District'], time: '3-4 working days' },
+    { title: 'Central Hyderabad', areas: ['Ameerpet','SR Nagar','Punjagutta','Begumpet','Somajiguda','Erragadda'], time: '3-4 working days' },
+    { title: 'Banjara & Jubilee', areas: ['Banjara Hills','Jubilee Hills','Film Nagar','Road No. 36','KBR Park Area','Panjagutta'], time: '3-4 working days' },
+    { title: 'Secunderabad', areas: ['Secunderabad','Bowenpally','Trimulgherry','Alwal','Sainikpuri','Malkajgiri'], time: '3-4 working days' },
+    { title: 'North Zone', areas: ['Kukatpally','KPHB','Miyapur','Chandanagar','Nizampet','Bachupally'], time: '3-4 working days' },
+    { title: 'South & East', areas: ['LB Nagar','Dilsukhnagar','Nagole','Uppal','Habsiguda','Tarnaka'], time: '3-4 working days' }
+  ],
+  blr: [
+    { title: 'Whitefield & IT', areas: ['Whitefield','ITPL','Marathahalli','Brookefield','Varthur','Kadugodi'], time: '7-10 working days' },
+    { title: 'Koramangala & HSR', areas: ['Koramangala','HSR Layout','BTM Layout','Madiwala','JP Nagar','Jayanagar'], time: '7-10 working days' },
+    { title: 'Indiranagar & MG Road', areas: ['Indiranagar','MG Road','Ulsoor','Richmond Town','Langford Town','Domlur'], time: '7-10 working days' },
+    { title: 'Electronic City', areas: ['Electronic City','Bommasandra','Hosa Road','Begur','Hulimavu','Arekere'], time: '7-10 working days' },
+    { title: 'North Bangalore', areas: ['Hebbal','Yelahanka','Devanahalli','Thanisandra','Sahakara Nagar','RT Nagar'], time: '7-10 working days' },
+    { title: 'South Bangalore', areas: ['Banashankari','Kanakapura Road','Uttarahalli','Kumaraswamy Layout','Padmanabhanagar','Girinagar'], time: '7-10 working days' }
+  ]
+};
+function switchArea(city, i) {
+  const d = areaData[city][i];
+  const content = document.getElementById(city + '-content');
+  content.querySelector('h4').textContent = d.title;
+  content.querySelector('.area-chips').innerHTML = d.areas.map(a => '<span class="area-chip">' + a + '</span>').join('');
+  content.querySelector('.area-time strong').textContent = d.time;
+  document.querySelectorAll('#' + city + '-tabs .area-tab').forEach((t, j) => t.classList.toggle('active', j === i));
+}
+
+// Testimonials
+const testimonials = [
+  { text: 'Mr. Jaipal responded the very next day with a highly experienced, disciplined driver. Extremely satisfied with the professionalism.', name: 'Zaheer Abbas Syed', role: 'CEO, Loan Genie', initial: 'Z' },
+  { text: 'We needed a driver urgently for our fleet vehicles and Sunrise Drivers delivered within 48 hours. The quality has been consistent.', name: 'Naresh Kumar D', role: 'MD, Macromedia Digital Imaging', initial: 'N' },
+  { text: 'The UPI AutoPay system is seamless. No more chasing payments or dealing with attendance issues. Highly recommended for busy professionals.', name: 'Priya Sharma', role: 'Tech Lead, Google', initial: 'P' },
+  { text: 'We have been using Sunrise Drivers for our corporate fleet for 3 years. Zero complaints from our executives.', name: 'Rajesh Mehta', role: 'VP Operations, Deloitte', initial: 'R' }
+];
+function showTestimonial(i) {
+  const t = testimonials[i];
+  const card = document.getElementById('testimonial-display');
+  card.querySelector('.testimonial-text').textContent = t.text;
+  card.querySelector('.testimonial-name').textContent = t.name;
+  card.querySelector('.testimonial-role').textContent = t.role;
+  card.querySelector('.testimonial-avatar').textContent = t.initial;
+  document.querySelectorAll('.dot').forEach((d, j) => d.classList.toggle('active', j === i));
+}
+
+// Driver type selection
+function selectDriverType(el) {
+  document.querySelectorAll('.driver-type-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// Form submission
+document.getElementById('lead-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('.form-submit');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  const data = new FormData(form);
+  const fullName = data.get('fullName').trim();
+  const nameParts = fullName.split(' ');
+  const firstName = nameParts[0];
+  const lastName = nameParts.slice(1).join(' ') || '';
+  const phone = data.get('phone').trim();
+  const city = data.get('city');
+  const area = data.get('area') || '';
+  const vehicle = data.get('vehicle');
+  const dutyHours = data.get('dutyHours') || '';
+  const driverType = data.get('driverType');
+
+  const payload = {
+    firstName,
+    lastName,
+    phone: phone.startsWith('+91') ? phone : '+91' + phone.replace(/^0+/, ''),
+    city,
+    tags: ['sunrise-lead', 'sunrise-' + city.toLowerCase(), 'sunrise-' + vehicle.toLowerCase(), 'sunrise-' + driverType.toLowerCase()],
+    customField: {
+      area: area,
+      vehicle_type: vehicle,
+      duty_hours: dutyHours,
+      driver_type: driverType
+    }
+  };
+
+  try {
+    // GHL API endpoint - replace TOKEN with active PIT
+    const GHL_LOCATION = 'DSK3kgZgwWoIRnAYf9uC';
+    const GHL_TOKEN = 'YOUR_PIT_TOKEN_HERE';
+
+    const res = await fetch('https://services.leadconnectorhq.com/contacts/', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + GHL_TOKEN,
+        'Content-Type': 'application/json',
+        'Version': '2021-07-28'
+      },
+      body: JSON.stringify({
+        ...payload,
+        locationId: GHL_LOCATION
+      })
+    });
+
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+      if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+      return;
+    }
+    throw new Error('API error');
+  } catch (err) {
+    // Fallback: redirect to WhatsApp
+    const msg = encodeURIComponent(
+      'Hi, I need a ' + driverType + ' driver.\n' +
+      'Name: ' + fullName + '\n' +
+      'City: ' + city + (area ? ', ' + area : '') + '\n' +
+      'Vehicle: ' + vehicle + '\n' +
+      (dutyHours ? 'Duty: ' + dutyHours + '\n' : '')
+    );
+    window.open('https://wa.me/917997777265?text=' + msg, '_blank');
+    form.style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Close mobile nav on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+});
+</script>
+
+</body>
+</html>
