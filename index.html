@@ -1082,17 +1082,54 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
   };
 
   try {
-    // GHL API endpoint — will be connected in Step 3
-    const GHL_LOCATION = 'SUNRISE_LOCATION_ID';
-    const GHL_TOKEN = 'SUNRISE_PIT_TOKEN';
+    const GHL_LOCATION = 'nN267sGAfjb5Xa3sNzbI';
+    const GHL_TOKEN = 'pit-a0efb549-f6b9-44a6-a117-2e6c18ccb10a';
+    const PIPELINE_ID = 'QDkhTx6HLYAz8RSWGaGb';
+    const NEW_LEAD_STAGE = '8c3a91a9-8c4f-4542-bf87-eaa6f7cb521a';
 
-    const res = await fetch('https://services.leadconnectorhq.com/contacts/', {
+    // Step 1: Create contact
+    const contactRes = await fetch('https://services.leadconnectorhq.com/contacts/', {
       method: 'POST',
       headers: { 'Authorization': 'Bearer ' + GHL_TOKEN, 'Content-Type': 'application/json', 'Version': '2021-07-28' },
-      body: JSON.stringify({ ...payload, locationId: GHL_LOCATION })
+      body: JSON.stringify({
+        firstName, lastName,
+        phone: payload.phone,
+        city: city,
+        locationId: GHL_LOCATION,
+        tags: payload.tags,
+        customFields: [
+          {id: 'XQatEb3JCK5PvF3TPIWI', field_value: area},
+          {id: 'H1udctLi1i7OfywpVeE3', field_value: vehicle},
+          {id: 'TimPtX6tr11rawilZeCK', field_value: workingHours},
+          {id: 't9uSlXJnXDrWPLT2jmik', field_value: driverType},
+          {id: 'XFm6HHuFc5n3moxBkquD', field_value: startDate},
+          {id: 'nzlNUUumXyrKUL81VthD', field_value: carePlan},
+          {id: 'Vived2GgrvPRI0yEAlW5', field_value: notes}
+        ]
+      })
     });
-    if (res.ok) { form.style.display = 'none'; document.getElementById('form-success').style.display = 'block'; if (typeof fbq !== 'undefined') fbq('track', 'Lead'); return; }
-    throw new Error('API error');
+    if (!contactRes.ok) throw new Error('Contact creation failed');
+    const contactData = await contactRes.json();
+    const contactId = contactData.contact.id;
+
+    // Step 2: Create opportunity in pipeline
+    await fetch('https://services.leadconnectorhq.com/opportunities/', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + GHL_TOKEN, 'Content-Type': 'application/json', 'Version': '2021-07-28' },
+      body: JSON.stringify({
+        pipelineId: PIPELINE_ID,
+        locationId: GHL_LOCATION,
+        name: fullName + ' - ' + driverType + ' Driver (' + city + ')',
+        pipelineStageId: NEW_LEAD_STAGE,
+        status: 'open',
+        contactId: contactId
+      })
+    });
+
+    form.style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+    if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+    return;
   } catch (err) {
     const msg = encodeURIComponent(
       'Hi, I need a ' + driverType + ' driver.\n' +
