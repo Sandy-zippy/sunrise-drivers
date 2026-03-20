@@ -3,175 +3,333 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sunrise Drivers: Verified Professional Chauffeurs & Driver Placement</title>
-  <meta name="description" content="Find verified, trained professional drivers in Hyderabad & Bangalore. Background-checked, monthly care plans starting ₹999/mo. 6,000+ families trust Sunrise Drivers.">
+  <title>Sunrise Drivers | Verified Professional Drivers in Hyderabad & Bangalore</title>
+  <meta name="description" content="Background-verified, professionally trained drivers placed at your doorstep. 10+ years, 6,000+ families. Monthly care plans from ₹999.">
+  <meta name="keywords" content="professional driver Hyderabad, driver placement Bangalore, verified driver service, personal chauffeur India">
+  <meta property="og:title" content="Sunrise Drivers | Verified Professional Drivers">
+  <meta property="og:description" content="Background-verified, trained drivers. Care plans from ₹999/mo. Trusted by 6,000+ families.">
+  <meta property="og:type" content="website">
   <link rel="icon" href="assets/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg: #0A0A0A;
-      --bg2: #111111;
-      --bg3: #1A1A1A;
-      --bg4: #222222;
-      --amber: #F7941D;
-      --amber2: #E8860B;
-      --amber3: #FDB813;
-      --white: #E5E5E5;
-      --gray: #888888;
-      --gray2: #555555;
-      --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --bg: #09090B;
+      --bg2: #0F0F12;
+      --bg3: #18181B;
+      --bg4: #27272A;
+      --amber: #F59E0B;
+      --amber2: #D97706;
+      --amber3: #FBBF24;
+      --amber-glow: rgba(245,158,11,0.15);
+      --white: #FAFAFA;
+      --gray: #A1A1AA;
+      --gray2: #52525B;
+      --gray3: #71717A;
+      --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
     }
     html { scroll-behavior: smooth; }
     body { font-family: var(--font); background: var(--bg); color: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
     a { text-decoration: none; color: inherit; }
     button { font-family: inherit; cursor: pointer; border: none; background: none; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    img { max-width: 100%; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    /* BUTTONS */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--amber), var(--amber2));
+      color: #000; font-weight: 700; padding: 12px 28px; border-radius: 50px;
+      font-size: 15px; transition: all 0.25s; display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 0 0 0 rgba(245,158,11,0), 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 24px rgba(245,158,11,0.25), 0 4px 16px rgba(0,0,0,0.4); }
+    .btn-primary svg { width: 16px; height: 16px; }
+    .btn-outline {
+      border: 1px solid var(--bg4); color: var(--gray); font-weight: 600;
+      padding: 12px 28px; border-radius: 50px; font-size: 15px; transition: all 0.25s;
+    }
+    .btn-outline:hover { border-color: var(--gray3); color: var(--white); background: rgba(255,255,255,0.03); }
 
     /* NAV */
-    nav { position: sticky; top: 0; background: rgba(10,10,10,0.91); backdrop-filter: blur(16px); z-index: 999; border-bottom: 1px solid var(--bg3); }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 6px 24px; max-width: 1200px; margin: 0 auto; }
-    .nav-logo { display: flex; align-items: center; gap: 8px; }
-    .nav-logo img { height: 36px; width: auto; }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { font-size: 13px; font-weight: 500; color: var(--gray); transition: color 0.2s; }
+    nav {
+      position: sticky; top: 0; z-index: 999;
+      background: rgba(9,9,11,0.85); backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; max-width: 1120px; margin: 0 auto; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo img { height: 32px; width: auto; }
+    .nav-logo span { font-weight: 700; font-size: 15px; letter-spacing: 0.5px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--gray); transition: color 0.2s; }
     .nav-links a:hover { color: var(--white); }
-    .btn-primary { background: linear-gradient(135deg, var(--amber), var(--amber2)); color: #000; font-weight: 700; padding: 10px 24px; border-radius: 50px; font-size: 14px; transition: transform 0.2s, box-shadow 0.2s; display: inline-flex; align-items: center; gap: 6px; }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(247,148,29,0.3); }
-    .btn-outline { border: 1px solid rgba(247,148,29,0.4); color: var(--amber); font-weight: 600; padding: 10px 24px; border-radius: 50px; font-size: 14px; transition: border-color 0.2s, background 0.2s; }
-    .btn-outline:hover { border-color: var(--amber); background: rgba(247,148,29,0.08); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; }
-    .hamburger span { width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: 0.3s; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; cursor: pointer; }
+    .hamburger span { width: 20px; height: 2px; background: var(--white); border-radius: 2px; transition: 0.3s; }
 
     /* HERO */
-    .hero { padding: 80px 24px 60px; }
-    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; max-width: 1200px; margin: 0 auto; }
-    .hero h1 { font-weight: 800; font-size: clamp(32px, 5vw, 52px); line-height: 1.15; margin-bottom: 20px; }
+    .hero { padding: 80px 24px 64px; position: relative; overflow: hidden; }
+    .hero::before {
+      content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 600px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(245,158,11,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; max-width: 1120px; margin: 0 auto; position: relative; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.15);
+      border-radius: 50px; padding: 6px 16px 6px 8px; font-size: 13px; color: var(--amber3);
+      font-weight: 500; margin-bottom: 24px;
+    }
+    .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero h1 { font-weight: 800; font-size: clamp(34px, 4.5vw, 52px); line-height: 1.12; margin-bottom: 20px; letter-spacing: -0.02em; }
     .hero h1 .accent { color: var(--amber); }
-    .hero-sub { color: var(--gray); font-size: 15px; line-height: 1.7; margin-bottom: 28px; max-width: 480px; }
-    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
-    .stats { display: flex; gap: 32px; }
-    .stat-item { text-align: center; }
-    .stat-num { font-size: 20px; font-weight: 800; color: var(--amber); }
-    .stat-label { font-size: 12px; color: var(--gray); margin-top: 2px; }
+    .hero-sub { color: var(--gray); font-size: 16px; line-height: 1.7; margin-bottom: 32px; max-width: 460px; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+    .stats { display: flex; gap: 40px; }
+    .stat-item { position: relative; padding-left: 16px; }
+    .stat-item::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 2px; background: linear-gradient(180deg, var(--amber), transparent); border-radius: 2px; }
+    .stat-num { font-size: 22px; font-weight: 800; color: var(--white); }
+    .stat-label { font-size: 12px; color: var(--gray3); margin-top: 2px; font-weight: 500; }
 
-    /* SERVICE TABS */
-    .service-tabs { display: flex; flex-direction: column; gap: 16px; }
-    .service-card { background: var(--bg3); border: 1px solid var(--bg4); border-radius: 20px; padding: 32px; min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transition: 0.4s; }
-    .service-card .icon { font-size: 48px; margin-bottom: 12px; }
-    .service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
-    .service-card p { font-size: 13px; color: var(--gray); }
-    .tab-btns { display: flex; gap: 8px; flex-wrap: wrap; }
-    .tab-btn { padding: 10px 18px; border-radius: 12px; font-size: 13px; font-weight: 600; background: var(--bg3); border: 1px solid var(--bg4); color: var(--gray); transition: 0.2s; }
-    .tab-btn.active { background: rgba(247,148,29,0.12); border-color: rgba(247,148,29,0.3); color: var(--amber); }
+    /* HERO RIGHT - SERVICE SHOWCASE */
+    .hero-right { position: relative; }
+    .service-showcase {
+      background: linear-gradient(145deg, var(--bg2), var(--bg3));
+      border: 1px solid var(--bg4); border-radius: var(--radius-xl);
+      padding: 32px; position: relative; overflow: hidden;
+    }
+    .service-showcase::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245,158,11,0.3), transparent);
+    }
+    .service-card-active { text-align: center; padding: 32px 16px; }
+    .service-card-active .icon-wrap {
+      width: 64px; height: 64px; border-radius: 16px; margin: 0 auto 16px;
+      background: var(--amber-glow); border: 1px solid rgba(245,158,11,0.2);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .service-card-active .icon-wrap svg { width: 28px; height: 28px; color: var(--amber); }
+    .service-card-active h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+    .service-card-active p { font-size: 14px; color: var(--gray); }
+    .service-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 24px; }
+    .service-tab {
+      padding: 10px 8px; border-radius: var(--radius); font-size: 12px; font-weight: 600;
+      background: var(--bg); border: 1px solid var(--bg4); color: var(--gray3);
+      transition: all 0.2s; text-align: center; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .service-tab svg { width: 18px; height: 18px; }
+    .service-tab.active { background: var(--amber-glow); border-color: rgba(245,158,11,0.25); color: var(--amber); }
+    .service-tab:hover { border-color: var(--gray2); color: var(--gray); }
+
+    /* TRUST BAR */
+    .trust-bar { padding: 40px 24px; border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); background: var(--bg2); }
+    .trust-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 10px; color: var(--gray3); font-size: 13px; font-weight: 500; }
+    .trust-item svg { width: 20px; height: 20px; color: var(--amber); flex-shrink: 0; }
 
     /* SECTIONS */
-    section { padding: 72px 24px; }
-    .section-label { font-size: 12px; font-weight: 600; color: var(--amber); text-transform: uppercase; letter-spacing: 3px; text-align: center; }
-    .section-title { font-weight: 800; font-size: clamp(24px, 4vw, 36px); text-align: center; margin-top: 12px; margin-bottom: 40px; }
-    .section-sub { text-align: center; color: var(--gray); font-size: 15px; margin-top: -28px; margin-bottom: 40px; }
+    section { padding: 80px 24px; }
+    .section-label {
+      font-size: 13px; font-weight: 600; color: var(--amber); text-transform: uppercase;
+      letter-spacing: 2px; text-align: center; display: flex; align-items: center;
+      justify-content: center; gap: 8px;
+    }
+    .section-label svg { width: 16px; height: 16px; }
+    .section-title { font-weight: 800; font-size: clamp(26px, 3.5vw, 38px); text-align: center; margin-top: 12px; margin-bottom: 16px; letter-spacing: -0.02em; }
+    .section-sub { text-align: center; color: var(--gray); font-size: 15px; margin-bottom: 48px; max-width: 560px; margin-left: auto; margin-right: auto; }
 
     /* HOW IT WORKS */
-    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
-    .step-card { background: var(--bg2); border: 1px solid var(--bg4); border-radius: 16px; padding: 28px 24px; position: relative; }
-    .step-num { font-size: 36px; font-weight: 800; color: rgba(247,148,29,0.15); margin-bottom: 12px; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1120px; margin: 0 auto; position: relative; }
+    .steps::before {
+      content: ''; position: absolute; top: 36px; left: 12%; right: 12%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--bg4), var(--bg4), transparent);
+      z-index: 0;
+    }
+    .step-card {
+      background: var(--bg2); border: 1px solid var(--bg4); border-radius: var(--radius-lg);
+      padding: 28px 20px; position: relative; z-index: 1; transition: border-color 0.3s;
+    }
+    .step-card:hover { border-color: rgba(245,158,11,0.2); }
+    .step-num {
+      width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800; color: var(--amber);
+      background: var(--amber-glow); border: 1px solid rgba(245,158,11,0.15); margin-bottom: 16px;
+    }
     .step-card h3 { font-weight: 700; font-size: 15px; margin-bottom: 8px; }
     .step-card p { font-size: 13px; color: var(--gray); line-height: 1.7; }
 
     /* FEATURES */
-    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
-    .feature-card { background: var(--bg2); border: 1px solid var(--bg4); border-radius: 16px; padding: 28px 24px; }
-    .feature-card .icon { font-size: 32px; margin-bottom: 12px; }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1120px; margin: 0 auto; }
+    .feature-card {
+      background: var(--bg2); border: 1px solid var(--bg4); border-radius: var(--radius-lg);
+      padding: 28px 24px; transition: all 0.3s; cursor: default;
+    }
+    .feature-card:hover { border-color: rgba(245,158,11,0.15); transform: translateY(-2px); }
+    .feature-icon {
+      width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      background: var(--amber-glow); border: 1px solid rgba(245,158,11,0.12); margin-bottom: 16px;
+    }
+    .feature-icon svg { width: 22px; height: 22px; color: var(--amber); }
     .feature-card h3 { font-weight: 700; font-size: 15px; margin-bottom: 8px; }
     .feature-card p { font-size: 13px; color: var(--gray); line-height: 1.7; }
 
     /* PLANS */
-    .plans-note { text-align: center; color: var(--gray); font-size: 14px; margin-bottom: 32px; }
+    .plans-note { text-align: center; color: var(--gray); font-size: 14px; margin-bottom: 36px; }
     .plans-note strong { color: var(--white); }
-    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
-    .plan-card { background: var(--bg2); border: 1px solid var(--bg4); border-radius: 16px; padding: 28px 24px; display: flex; flex-direction: column; }
-    .plan-card.popular { border-color: rgba(247,148,29,0.4); position: relative; }
-    .plan-badge { position: absolute; top: -10px; right: 20px; background: linear-gradient(135deg, var(--amber), var(--amber2)); color: #000; font-size: 10px; font-weight: 800; padding: 4px 12px; border-radius: 6px; letter-spacing: 1px; }
-    .plan-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
-    .plan-price { font-size: 28px; font-weight: 800; color: var(--amber); }
-    .plan-price span { font-size: 14px; font-weight: 500; color: var(--gray); }
-    .plan-billing { font-size: 11px; color: var(--gray2); margin-bottom: 20px; }
+    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 960px; margin: 0 auto; }
+    .plan-card {
+      background: var(--bg2); border: 1px solid var(--bg4); border-radius: var(--radius-xl);
+      padding: 32px 24px; display: flex; flex-direction: column; transition: all 0.3s;
+    }
+    .plan-card:hover { border-color: rgba(255,255,255,0.08); }
+    .plan-card.popular { border-color: rgba(245,158,11,0.3); background: linear-gradient(180deg, rgba(245,158,11,0.04), var(--bg2)); }
+    .plan-badge {
+      display: inline-flex; align-items: center; gap: 4px; align-self: flex-start;
+      background: linear-gradient(135deg, var(--amber), var(--amber2));
+      color: #000; font-size: 11px; font-weight: 800; padding: 4px 12px;
+      border-radius: 6px; letter-spacing: 0.5px; margin-bottom: 16px;
+    }
+    .plan-name { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .plan-price { font-size: 32px; font-weight: 800; color: var(--white); }
+    .plan-price span { font-size: 14px; font-weight: 500; color: var(--gray3); }
+    .plan-billing { font-size: 12px; color: var(--gray2); margin-bottom: 20px; margin-top: 4px; }
     .plan-features { list-style: none; flex: 1; }
-    .plan-features li { font-size: 13px; color: var(--gray); padding: 6px 0; display: flex; align-items: flex-start; gap: 8px; }
-    .plan-features li::before { content: '✓'; color: var(--amber); font-weight: 700; flex-shrink: 0; }
-    .plan-cta { text-align: center; margin-top: 40px; }
-    .plan-cta p { font-size: 12px; color: var(--gray2); margin-top: 8px; }
+    .plan-features li {
+      font-size: 13px; color: var(--gray); padding: 7px 0;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .plan-features li svg { width: 16px; height: 16px; color: var(--amber); flex-shrink: 0; margin-top: 2px; }
+    .plan-cta { text-align: center; margin-top: 48px; }
+    .plan-cta p { font-size: 13px; color: var(--gray2); margin-top: 12px; }
 
     /* COVERAGE */
     .coverage-wrap { max-width: 800px; margin: 0 auto; }
-    .city-tabs { display: flex; gap: 12px; justify-content: center; margin-bottom: 24px; }
-    .city-tab { padding: 10px 24px; border-radius: 12px; font-size: 14px; font-weight: 600; background: var(--bg3); border: 1px solid var(--bg4); color: var(--gray); transition: 0.2s; }
-    .city-tab.active { background: rgba(247,148,29,0.12); border-color: rgba(247,148,29,0.3); color: var(--amber); }
+    .city-tabs { display: flex; gap: 8px; justify-content: center; margin-bottom: 28px; }
+    .city-tab {
+      padding: 10px 24px; border-radius: var(--radius); font-size: 14px; font-weight: 600;
+      background: var(--bg3); border: 1px solid var(--bg4); color: var(--gray3);
+      transition: all 0.2s; cursor: pointer; display: flex; align-items: center; gap: 8px;
+    }
+    .city-tab svg { width: 16px; height: 16px; }
+    .city-tab.active { background: var(--amber-glow); border-color: rgba(245,158,11,0.25); color: var(--amber); }
     .area-panel { display: none; }
     .area-panel.active { display: block; }
-    .area-tabs-wrap { display: flex; gap: 20px; }
+    .area-tabs-wrap { display: flex; gap: 16px; }
     .area-tabs { display: flex; flex-direction: column; gap: 4px; min-width: 160px; flex-shrink: 0; }
-    .area-tab { padding: 10px 16px; border-radius: 10px; font-size: 13px; font-weight: 600; text-align: left; color: var(--gray); transition: 0.2s; }
-    .area-tab.active { background: rgba(247,148,29,0.12); color: var(--amber); }
-    .area-content { flex: 1; background: var(--bg3); border-radius: 16px; padding: 24px; border: 1px solid var(--bg4); }
-    .area-content h4 { font-weight: 700; margin-bottom: 14px; color: var(--amber); }
+    .area-tab {
+      padding: 10px 16px; border-radius: 10px; font-size: 13px; font-weight: 600;
+      text-align: left; color: var(--gray3); transition: all 0.2s; cursor: pointer; background: transparent;
+    }
+    .area-tab.active { background: var(--amber-glow); color: var(--amber); }
+    .area-tab:hover:not(.active) { color: var(--gray); }
+    .area-content { flex: 1; background: var(--bg3); border-radius: var(--radius-lg); padding: 24px; border: 1px solid var(--bg4); }
+    .area-content h4 { font-weight: 700; margin-bottom: 14px; color: var(--amber); font-size: 15px; }
     .area-chips { display: flex; flex-wrap: wrap; gap: 6px; }
     .area-chip { background: var(--bg2); padding: 6px 14px; border-radius: 8px; font-size: 13px; border: 1px solid var(--bg4); color: var(--white); }
-    .area-time { margin-top: 16px; font-size: 13px; color: var(--gray2); }
+    .area-time { margin-top: 16px; font-size: 13px; color: var(--gray2); display: flex; align-items: center; gap: 6px; }
+    .area-time svg { width: 14px; height: 14px; color: var(--amber); }
     .area-time strong { color: var(--amber); }
 
-    /* TESTIMONIAL */
+    /* TESTIMONIALS */
     .testimonial-section { background: var(--bg2); }
-    .testimonial-card { max-width: 700px; margin: 0 auto; background: var(--bg3); border: 1px solid rgba(247,148,29,0.125); border-radius: 16px; padding: 32px; }
-    .testimonial-quote { font-size: 36px; color: var(--amber); line-height: 1; margin-bottom: 8px; }
-    .testimonial-text { font-size: 15px; line-height: 1.8; font-style: italic; margin-bottom: 20px; }
+    .testimonial-card {
+      max-width: 640px; margin: 0 auto;
+      background: var(--bg3); border: 1px solid rgba(245,158,11,0.08);
+      border-radius: var(--radius-xl); padding: 36px;
+    }
+    .testimonial-stars { display: flex; gap: 2px; margin-bottom: 16px; }
+    .testimonial-stars svg { width: 16px; height: 16px; color: var(--amber); fill: var(--amber); }
+    .testimonial-text { font-size: 16px; line-height: 1.8; font-style: italic; margin-bottom: 24px; color: var(--gray); }
     .testimonial-author { display: flex; align-items: center; gap: 12px; }
-    .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--amber), var(--amber3)); display: flex; align-items: center; justify-content: center; color: #000; font-weight: 800; font-size: 16px; }
-    .testimonial-name { font-weight: 700; font-size: 13px; }
-    .testimonial-role { color: var(--gray); font-size: 11px; }
-    .dots { display: flex; gap: 8px; justify-content: center; margin-top: 16px; }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--bg4); transition: 0.2s; cursor: pointer; }
+    .testimonial-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--amber), var(--amber3));
+      display: flex; align-items: center; justify-content: center;
+      color: #000; font-weight: 800; font-size: 16px;
+    }
+    .testimonial-name { font-weight: 700; font-size: 14px; }
+    .testimonial-role { color: var(--gray3); font-size: 12px; }
+    .dots { display: flex; gap: 8px; justify-content: center; margin-top: 20px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--bg4); transition: all 0.3s; cursor: pointer; }
     .dot.active { background: var(--amber); width: 24px; border-radius: 4px; }
 
     /* FORM */
     .form-section { max-width: 640px; margin: 0 auto; }
-    .form-header { text-align: center; margin-bottom: 32px; }
-    .form-header img { height: 48px; margin-bottom: 16px; }
-    .form-header .label { font-size: 12px; font-weight: 600; color: var(--amber); text-transform: uppercase; letter-spacing: 3px; }
-    .form-header h2 { font-weight: 800; font-size: clamp(24px, 4vw, 36px); margin-top: 8px; }
-    .form-header p { color: var(--gray); font-size: 14px; margin-top: 8px; }
+    .form-header { text-align: center; margin-bottom: 36px; }
+    .form-header img { height: 44px; margin-bottom: 16px; }
+    .form-header h2 { font-weight: 800; font-size: clamp(26px, 3.5vw, 36px); margin-top: 8px; letter-spacing: -0.02em; }
+    .form-header p { color: var(--gray); font-size: 15px; margin-top: 8px; }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .form-group { display: flex; flex-direction: column; gap: 6px; }
     .form-group.full { grid-column: 1 / -1; }
-    .form-group label { font-size: 12px; font-weight: 600; color: var(--gray); }
+    .form-group label { font-size: 13px; font-weight: 600; color: var(--gray); }
     .form-group label .req { color: var(--amber); }
-    .form-group input, .form-group select { background: var(--bg2); border: 1px solid var(--bg4); border-radius: 10px; padding: 12px 16px; color: var(--white); font-size: 14px; font-family: var(--font); outline: none; transition: border-color 0.2s; }
-    .form-group input:focus, .form-group select:focus { border-color: var(--amber); }
-    .form-group input::placeholder { color: var(--gray2); }
-    .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+    .form-group input, .form-group select, .form-group textarea {
+      background: var(--bg2); border: 1px solid var(--bg4); border-radius: var(--radius);
+      padding: 12px 16px; color: var(--white); font-size: 14px; font-family: var(--font);
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--amber); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--gray2); }
+    .form-group select {
+      appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717A' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
+    }
+    .form-group select option { background: var(--bg2); color: var(--white); }
+    .form-group select option:disabled { color: var(--gray2); }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+
+    /* AREA AUTOCOMPLETE */
+    .autocomplete-wrap { position: relative; }
+    .autocomplete-list {
+      position: absolute; top: 100%; left: 0; right: 0; z-index: 50;
+      background: var(--bg2); border: 1px solid var(--bg4); border-radius: var(--radius);
+      max-height: 200px; overflow-y: auto; display: none; margin-top: 4px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .autocomplete-list.show { display: block; }
+    .autocomplete-item {
+      padding: 10px 16px; font-size: 14px; color: var(--gray); cursor: pointer;
+      transition: background 0.15s;
+    }
+    .autocomplete-item:hover, .autocomplete-item.highlighted { background: var(--amber-glow); color: var(--white); }
+    .autocomplete-item .match { color: var(--amber); font-weight: 600; }
+
+    /* DRIVER TYPE CARDS */
     .driver-type-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .driver-type-card { background: var(--bg2); border: 2px solid var(--bg4); border-radius: 12px; padding: 16px; cursor: pointer; transition: 0.2s; text-align: center; }
-    .driver-type-card.selected { border-color: var(--amber); background: rgba(247,148,29,0.06); }
+    .driver-type-card {
+      background: var(--bg2); border: 2px solid var(--bg4); border-radius: var(--radius);
+      padding: 16px; cursor: pointer; transition: all 0.2s; text-align: center;
+    }
+    .driver-type-card.selected { border-color: var(--amber); background: rgba(245,158,11,0.04); }
+    .driver-type-card:hover:not(.selected) { border-color: var(--gray2); }
     .driver-type-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-    .driver-type-card p { font-size: 11px; color: var(--gray); line-height: 1.4; }
+    .driver-type-card p { font-size: 12px; color: var(--gray); line-height: 1.4; }
     .driver-type-card input { display: none; }
-    .form-submit { width: 100%; margin-top: 20px; padding: 14px; font-size: 16px; }
+    .form-submit { width: 100%; margin-top: 24px; padding: 14px; font-size: 16px; }
     .form-submit:disabled { opacity: 0.4; cursor: not-allowed; }
-    .form-privacy { text-align: center; font-size: 11px; color: var(--gray2); margin-top: 12px; }
+    .form-privacy { text-align: center; font-size: 12px; color: var(--gray2); margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .form-privacy svg { width: 14px; height: 14px; }
     .form-success { text-align: center; padding: 48px 24px; display: none; }
-    .form-success .check { font-size: 56px; margin-bottom: 16px; }
     .form-success h3 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
     .form-success p { color: var(--gray); font-size: 14px; }
 
     /* FOOTER */
-    footer { padding: 48px 24px; border-top: 1px solid var(--bg3); }
-    .footer-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
-    .footer-logo { display: flex; align-items: center; gap: 8px; justify-content: center; margin-bottom: 12px; }
+    footer { padding: 48px 24px; border-top: 1px solid rgba(255,255,255,0.04); }
+    .footer-inner { max-width: 1120px; margin: 0 auto; text-align: center; }
+    .footer-logo { display: flex; align-items: center; gap: 10px; justify-content: center; margin-bottom: 12px; }
     .footer-logo img { height: 28px; }
-    .footer-company { font-weight: 700; font-size: 14px; letter-spacing: 1px; }
-    .footer-tagline { font-size: 13px; color: var(--gray); margin-bottom: 16px; }
+    .footer-company { font-weight: 700; font-size: 14px; letter-spacing: 0.5px; }
+    .footer-tagline { font-size: 13px; color: var(--gray3); margin-bottom: 16px; }
     .footer-address { font-size: 12px; color: var(--gray2); margin-bottom: 8px; }
     .footer-legal { font-size: 11px; color: var(--gray2); margin-bottom: 16px; }
     .footer-copy { font-size: 11px; color: var(--gray2); }
@@ -179,31 +337,49 @@
 
     /* FLOATING CTAs */
     .floating-ctas { position: fixed; bottom: 24px; right: 24px; display: flex; flex-direction: column; gap: 12px; z-index: 998; }
-    .float-btn { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.4); transition: transform 0.2s; }
+    .float-btn {
+      width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5); transition: transform 0.2s;
+    }
     .float-btn:hover { transform: scale(1.1); }
-    .float-phone { background: linear-gradient(135deg, var(--amber), var(--amber2)); }
-    .float-whatsapp { background: #25D366; }
+    .float-btn svg { width: 24px; height: 24px; }
+    .float-phone { background: linear-gradient(135deg, var(--amber), var(--amber2)); color: #000; }
+    .float-whatsapp { background: #25D366; color: #fff; }
 
     /* ANIMATIONS */
-    .fade-up { opacity: 0; transform: translateY(36px); transition: opacity 0.7s, transform 0.7s; }
+    .fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .fade-up-delay { transition-delay: 0.15s; }
+    .fade-up-d1 { transition-delay: 0.1s; }
+    .fade-up-d2 { transition-delay: 0.2s; }
+    .fade-up-d3 { transition-delay: 0.3s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up { opacity: 1; transform: none; transition: none; }
+      @keyframes pulse-dot { 0%, 100% { opacity: 1; } }
+    }
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; text-align: center; }
       .hero-sub { margin: 0 auto 28px; }
       .hero-ctas { justify-content: center; }
+      .hero-badge { margin: 0 auto 24px; }
       .stats { justify-content: center; }
-      .service-tabs { order: -1; }
+      .service-showcase { order: -1; }
       .steps { grid-template-columns: repeat(2, 1fr); }
+      .steps::before { display: none; }
       .features { grid-template-columns: repeat(2, 1fr); }
-      .plans-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .plans-grid { grid-template-columns: 1fr; max-width: 380px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,10,0.97); padding: 24px; gap: 20px; border-bottom: 1px solid var(--bg3); }
+      .nav-links.open {
+        display: flex; flex-direction: column; position: absolute;
+        top: 100%; left: 0; right: 0; background: rgba(9,9,11,0.97);
+        padding: 24px; gap: 20px; border-bottom: 1px solid var(--bg4);
+      }
       .area-tabs-wrap { flex-direction: column; }
       .area-tabs { flex-direction: row; flex-wrap: wrap; min-width: 0; }
+      .trust-inner { gap: 24px; }
     }
     @media (max-width: 600px) {
       .steps { grid-template-columns: 1fr; }
@@ -212,6 +388,8 @@
       .driver-type-cards { grid-template-columns: 1fr; }
       section { padding: 56px 16px; }
       .hero { padding: 48px 16px 40px; }
+      .service-tabs { grid-template-columns: repeat(2, 1fr); }
+      .trust-inner { flex-direction: column; gap: 16px; }
     }
   </style>
 </head>
@@ -222,15 +400,17 @@
   <div class="nav-inner">
     <a href="#" class="nav-logo">
       <img src="assets/logo.png" alt="Sunrise Drivers">
+      <span>SUNRISE DRIVERS</span>
     </a>
-    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links">
       <li><a href="#how">How It Works</a></li>
-      <li><a href="#why">Why Sunrise Drivers</a></li>
+      <li><a href="#why">Why Us</a></li>
       <li><a href="#plans">Care Plans</a></li>
-      <li><a href="#start" class="btn-primary">Find My Driver &rarr;</a></li>
+      <li><a href="#areas">Coverage</a></li>
+      <li><a href="#start" class="btn-primary">Get Your Driver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li>
     </ul>
   </div>
 </nav>
@@ -239,68 +419,115 @@
 <section class="hero">
   <div class="hero-grid">
     <div>
-      <h1 class="fade-up">Find the Right<br><span class="accent">Driver for You.</span><br>Verified. Trained. Monthly.</h1>
-      <p class="hero-sub fade-up fade-up-delay">Every Sunrise driver is background-verified, professionally trained, and backed by our Care Plan so you never worry about finding, managing, or replacing a driver again.</p>
-      <div class="hero-ctas fade-up fade-up-delay">
-        <a href="#start" class="btn-primary">Find My Driver &rarr;</a>
-        <a href="#how" class="btn-outline">How It Works</a>
+      <div class="hero-badge fade-up">
+        <span class="dot"></span>
+        Serving 6,000+ families since 2013
       </div>
-      <div class="stats fade-up fade-up-delay">
+      <h1 class="fade-up fade-up-d1">Your Next Driver is<br><span class="accent">Already Verified.</span></h1>
+      <p class="hero-sub fade-up fade-up-d2">Background-checked, professionally trained, and backed by a care plan. We place the driver. You get peace of mind.</p>
+      <div class="hero-ctas fade-up fade-up-d2">
+        <a href="#start" class="btn-primary">Get Your Driver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <a href="#how" class="btn-outline">See How It Works</a>
+      </div>
+      <div class="stats fade-up fade-up-d3">
         <div class="stat-item">
           <div class="stat-num">10+ Yrs</div>
-          <div class="stat-label">Experience</div>
+          <div class="stat-label">In Business</div>
         </div>
         <div class="stat-item">
           <div class="stat-num">6,000+</div>
-          <div class="stat-label">Families</div>
+          <div class="stat-label">Families Served</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">4.8 ★</div>
-          <div class="stat-label">JustDial</div>
+          <div class="stat-num">4.8/5</div>
+          <div class="stat-label">JustDial Rating</div>
         </div>
       </div>
     </div>
-    <div class="service-tabs fade-up">
-      <div class="service-card" id="service-display">
-        <div class="icon">🚗</div>
-        <h3>Personal Drivers</h3>
-        <p>For families &amp; professionals</p>
-      </div>
-      <div class="tab-btns">
-        <button class="tab-btn active" onclick="showService(0)">🚗 Personal</button>
-        <button class="tab-btn" onclick="showService(1)">🏢 Corporate</button>
-        <button class="tab-btn" onclick="showService(2)">⭐ Valet</button>
-        <button class="tab-btn" onclick="showService(3)">🔒 Verified</button>
+    <div class="hero-right fade-up fade-up-d2">
+      <div class="service-showcase">
+        <div class="service-card-active" id="service-display">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C1.4 11.3 1 12.1 1 13v3c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
+          </div>
+          <h3>Personal Drivers</h3>
+          <p>For families and working professionals who need a reliable, full-time driver</p>
+        </div>
+        <div class="service-tabs">
+          <button class="service-tab active" onclick="showService(0)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C1.4 11.3 1 12.1 1 13v3c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
+            Personal
+          </button>
+          <button class="service-tab" onclick="showService(1)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            Corporate
+          </button>
+          <button class="service-tab" onclick="showService(2)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Valet
+          </button>
+          <button class="service-tab" onclick="showService(3)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Verified
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- TRUST BAR -->
+<div class="trust-bar fade-up">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Police Verified
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 6 3 6 3s3 0 6-3v-5"/></svg>
+      Professionally Trained
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      3-4 Day Placement
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+      Free Replacements
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      UPI AutoPay
+    </div>
+  </div>
+</div>
+
 <!-- HOW IT WORKS -->
 <section id="how" style="background: var(--bg2);">
   <div class="container">
-    <div class="section-label fade-up">Process</div>
-    <h2 class="section-title fade-up">How It Works</h2>
+    <div class="section-label fade-up">How It Works</div>
+    <h2 class="section-title fade-up">Four Steps to Your Verified Driver</h2>
+    <p class="section-sub fade-up">From request to placement in as little as 3 working days</p>
     <div class="steps">
       <div class="step-card fade-up">
-        <div class="step-num">01</div>
-        <h3>Share Your Requirement</h3>
-        <p>Tell us your city, vehicle type, and duty hours needed.</p>
+        <div class="step-num">1</div>
+        <h3>Share Your Needs</h3>
+        <p>Tell us your city, vehicle type, duty hours, and when you need the driver to start.</p>
       </div>
-      <div class="step-card fade-up fade-up-delay">
-        <div class="step-num">02</div>
-        <h3>We Source &amp; Verify</h3>
-        <p>We match from our 30,000+ driver network and run background checks.</p>
+      <div class="step-card fade-up fade-up-d1">
+        <div class="step-num">2</div>
+        <h3>We Match & Verify</h3>
+        <p>We source from our 30,000+ driver network, run background checks, and shortlist the best fit.</p>
       </div>
-      <div class="step-card fade-up fade-up-delay">
-        <div class="step-num">03</div>
-        <h3>Driver Assigned</h3>
-        <p>Your verified driver starts. Choose a Care Plan for ongoing coverage.</p>
+      <div class="step-card fade-up fade-up-d2">
+        <div class="step-num">3</div>
+        <h3>Driver Placed</h3>
+        <p>Your verified driver starts on your preferred date. Pick a care plan for ongoing coverage.</p>
       </div>
-      <div class="step-card fade-up fade-up-delay">
-        <div class="step-num">04</div>
-        <h3>Monthly Auto-Debit</h3>
-        <p>UPI AutoPay handles billing. We handle replacements and support.</p>
+      <div class="step-card fade-up fade-up-d3">
+        <div class="step-num">4</div>
+        <h3>Sit Back</h3>
+        <p>Monthly billing via UPI AutoPay. We handle replacements, training refreshes, and support.</p>
       </div>
     </div>
   </div>
@@ -311,36 +538,49 @@
   <div class="container">
     <div class="section-label fade-up">Why Sunrise Drivers</div>
     <h2 class="section-title fade-up">Not Just a Driver. A Certified Professional.</h2>
+    <p class="section-sub fade-up">Every driver in our network passes a 5-point verification before they reach you</p>
     <div class="features">
       <div class="feature-card fade-up">
-        <div class="icon">🔍</div>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
         <h3>Background Verified</h3>
-        <p>Police verification, identity checks, reference validation before every assignment.</p>
+        <p>Police verification, Aadhaar check, past employer references. No shortcuts.</p>
       </div>
-      <div class="feature-card fade-up">
-        <div class="icon">🎓</div>
+      <div class="feature-card fade-up fade-up-d1">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 6 3 6 3s3 0 6-3v-5"/></svg>
+        </div>
         <h3>Professionally Trained</h3>
         <p>Road discipline, vehicle handling, professional conduct, client communication.</p>
       </div>
-      <div class="feature-card fade-up">
-        <div class="icon">⚡</div>
-        <h3>Fast Assignment</h3>
-        <p>Hyderabad: 3-4 working days. Bangalore: 7-10 days. Same-day temp replacements.</p>
+      <div class="feature-card fade-up fade-up-d2">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Fast Placement</h3>
+        <p>Hyderabad: 3-4 working days. Bangalore: 7-10 days. Same-day temp replacements available.</p>
       </div>
       <div class="feature-card fade-up">
-        <div class="icon">🔄</div>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.2v-2a4 4 0 0 1 4-4h12.8M7 21.9l-4-4 4-4"/><path d="M21 11.8v2a4 4 0 0 1-4 4H4.2"/></svg>
+        </div>
         <h3>Free Replacements</h3>
-        <p>Driver not the right fit? We replace at no cost, included in every care plan.</p>
+        <p>Driver not the right fit? We replace at zero cost. Included in every care plan.</p>
       </div>
-      <div class="feature-card fade-up">
-        <div class="icon">📱</div>
-        <h3>UPI Auto-Debit</h3>
-        <p>Monthly care plan via UPI AutoPay. Set once, no manual payments ever.</p>
+      <div class="feature-card fade-up fade-up-d1">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <h3>UPI AutoPay Billing</h3>
+        <p>Set it once. Monthly care plan debits automatically. No chasing, no reminders.</p>
       </div>
-      <div class="feature-card fade-up">
-        <div class="icon">🤝</div>
+      <div class="feature-card fade-up fade-up-d2">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
         <h3>Zero Commission</h3>
-        <p>You pay driver salary directly. We charge only placement fee + care plan.</p>
+        <p>You pay the driver's salary directly. We charge only placement fee + care plan.</p>
       </div>
     </div>
   </div>
@@ -350,56 +590,53 @@
 <section id="plans" style="background: var(--bg2);">
   <div class="container">
     <div class="section-label fade-up">Care Plans</div>
-    <h2 class="section-title fade-up">Choose the Right Coverage</h2>
-    <p class="plans-note fade-up">One-time placement fee of <strong>&#8377;9,999</strong> + monthly care plan below.</p>
+    <h2 class="section-title fade-up">Choose Your Coverage</h2>
+    <p class="plans-note fade-up">One-time placement fee of <strong>&#8377;9,999</strong> + monthly care plan below</p>
     <div class="plans-grid">
-      <!-- BASIC -->
       <div class="plan-card fade-up">
         <div class="plan-name">Basic</div>
-        <div class="plan-price">&#8377;999<span>/month</span></div>
+        <div class="plan-price">&#8377;999<span>/mo</span></div>
         <div class="plan-billing">Via UPI AutoPay</div>
         <ul class="plan-features">
-          <li>Verified &amp; trained driver</li>
-          <li>2 free replacements / year</li>
-          <li>Monthly attendance reports</li>
-          <li>WhatsApp support (business hrs)</li>
-          <li>15-day post-onboarding check-in</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Verified & trained driver</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>2 free replacements / year</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Monthly attendance reports</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>WhatsApp support (business hrs)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>15-day post-onboarding check-in</li>
         </ul>
       </div>
-      <!-- STANDARD -->
-      <div class="plan-card popular fade-up">
-        <div class="plan-badge">POPULAR</div>
+      <div class="plan-card popular fade-up fade-up-d1">
+        <div class="plan-badge">MOST CHOSEN</div>
         <div class="plan-name">Standard</div>
-        <div class="plan-price">&#8377;1,499<span>/month</span></div>
+        <div class="plan-price">&#8377;1,499<span>/mo</span></div>
         <div class="plan-billing">Via UPI AutoPay</div>
         <ul class="plan-features">
-          <li>Everything in Basic, plus:</li>
-          <li>4 free replacements / year</li>
-          <li>Priority replacement in 24 hrs</li>
-          <li>Monthly performance reviews</li>
-          <li>Quarterly driver training refresh</li>
-          <li>Dedicated WhatsApp support</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Everything in Basic</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>4 free replacements / year</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Priority replacement in 24 hrs</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Monthly performance reviews</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Quarterly training refresh</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Dedicated WhatsApp support</li>
         </ul>
       </div>
-      <!-- PREMIUM -->
-      <div class="plan-card fade-up">
-        <div class="plan-badge" style="background: linear-gradient(135deg, #666, #444);">ALL-IN</div>
+      <div class="plan-card fade-up fade-up-d2">
+        <div class="plan-badge" style="background: linear-gradient(135deg, #71717A, #52525B);">ALL-IN</div>
         <div class="plan-name">Premium</div>
-        <div class="plan-price">&#8377;1,999<span>/month</span></div>
+        <div class="plan-price">&#8377;1,999<span>/mo</span></div>
         <div class="plan-billing">Via UPI AutoPay</div>
         <ul class="plan-features">
-          <li>Everything in Standard, plus:</li>
-          <li>Unlimited replacements</li>
-          <li>Backup driver on-call (48hr notice)</li>
-          <li>Dedicated account manager</li>
-          <li>Real-time driver tracking</li>
-          <li>Priority onboarding (2 days)</li>
-          <li>Annual performance report</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Everything in Standard</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Unlimited replacements</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Backup driver on-call (48hr notice)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Dedicated account manager</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Real-time driver tracking</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Priority onboarding (2 days)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Annual performance report</li>
         </ul>
       </div>
     </div>
     <div class="plan-cta fade-up">
-      <a href="#start" class="btn-primary">Find My Driver &rarr;</a>
+      <a href="#start" class="btn-primary">Get Your Driver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
       <p>Plan selection after we confirm your requirements</p>
     </div>
   </div>
@@ -410,25 +647,30 @@
   <div class="container">
     <div class="section-label fade-up">Coverage</div>
     <h2 class="section-title fade-up">Two Cities. One Standard.</h2>
+    <p class="section-sub fade-up">Deep coverage across Hyderabad and Bangalore neighborhoods</p>
     <div class="coverage-wrap fade-up">
       <div class="city-tabs">
-        <button class="city-tab active" onclick="switchCity('hyd')">📍 Hyderabad</button>
-        <button class="city-tab" onclick="switchCity('blr')">📍 Bangalore</button>
+        <button class="city-tab active" onclick="switchCity('hyd')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Hyderabad
+        </button>
+        <button class="city-tab" onclick="switchCity('blr')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Bangalore
+        </button>
       </div>
-
-      <!-- HYDERABAD -->
       <div class="area-panel active" id="city-hyd">
         <div class="area-tabs-wrap">
           <div class="area-tabs" id="hyd-tabs">
-            <button class="area-tab active" onclick="switchArea('hyd', 0)">HITEC City &amp; IT</button>
-            <button class="area-tab" onclick="switchArea('hyd', 1)">Central Hyderabad</button>
-            <button class="area-tab" onclick="switchArea('hyd', 2)">Banjara &amp; Jubilee</button>
+            <button class="area-tab active" onclick="switchArea('hyd', 0)">HITEC City & IT</button>
+            <button class="area-tab" onclick="switchArea('hyd', 1)">Central</button>
+            <button class="area-tab" onclick="switchArea('hyd', 2)">Banjara & Jubilee</button>
             <button class="area-tab" onclick="switchArea('hyd', 3)">Secunderabad</button>
             <button class="area-tab" onclick="switchArea('hyd', 4)">North Zone</button>
-            <button class="area-tab" onclick="switchArea('hyd', 5)">South &amp; East</button>
+            <button class="area-tab" onclick="switchArea('hyd', 5)">South & East</button>
           </div>
           <div class="area-content" id="hyd-content">
-            <h4>HITEC City &amp; IT</h4>
+            <h4>HITEC City & IT Corridor</h4>
             <div class="area-chips">
               <span class="area-chip">Gachibowli</span>
               <span class="area-chip">HITEC City</span>
@@ -437,24 +679,25 @@
               <span class="area-chip">Manikonda</span>
               <span class="area-chip">Financial District</span>
             </div>
-            <p class="area-time">⚡ Assignment: <strong>3-4 working days</strong></p>
+            <p class="area-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              Assignment: <strong>3-4 working days</strong>
+            </p>
           </div>
         </div>
       </div>
-
-      <!-- BANGALORE -->
       <div class="area-panel" id="city-blr">
         <div class="area-tabs-wrap">
           <div class="area-tabs" id="blr-tabs">
-            <button class="area-tab active" onclick="switchArea('blr', 0)">Whitefield &amp; IT</button>
-            <button class="area-tab" onclick="switchArea('blr', 1)">Koramangala &amp; HSR</button>
-            <button class="area-tab" onclick="switchArea('blr', 2)">Indiranagar &amp; MG Road</button>
+            <button class="area-tab active" onclick="switchArea('blr', 0)">Whitefield & IT</button>
+            <button class="area-tab" onclick="switchArea('blr', 1)">Koramangala & HSR</button>
+            <button class="area-tab" onclick="switchArea('blr', 2)">Indiranagar</button>
             <button class="area-tab" onclick="switchArea('blr', 3)">Electronic City</button>
             <button class="area-tab" onclick="switchArea('blr', 4)">North Bangalore</button>
             <button class="area-tab" onclick="switchArea('blr', 5)">South Bangalore</button>
           </div>
           <div class="area-content" id="blr-content">
-            <h4>Whitefield &amp; IT</h4>
+            <h4>Whitefield & IT Corridor</h4>
             <div class="area-chips">
               <span class="area-chip">Whitefield</span>
               <span class="area-chip">ITPL</span>
@@ -463,7 +706,10 @@
               <span class="area-chip">Varthur</span>
               <span class="area-chip">Kadugodi</span>
             </div>
-            <p class="area-time">⚡ Assignment: <strong>7-10 working days</strong></p>
+            <p class="area-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              Assignment: <strong>7-10 working days</strong>
+            </p>
           </div>
         </div>
       </div>
@@ -471,14 +717,21 @@
   </div>
 </section>
 
-<!-- TESTIMONIAL -->
+<!-- TESTIMONIALS -->
 <section id="trust" class="testimonial-section">
   <div class="container">
     <div class="section-label fade-up">Client Stories</div>
-    <h2 class="section-title fade-up">Trusted by Leaders</h2>
+    <h2 class="section-title fade-up">Trusted by Business Leaders</h2>
+    <p class="section-sub fade-up">Hear from families and companies who rely on Sunrise Drivers</p>
     <div class="fade-up">
       <div class="testimonial-card" id="testimonial-display">
-        <div class="testimonial-quote">&ldquo;</div>
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
         <p class="testimonial-text">Mr. Jaipal responded the very next day with a highly experienced, disciplined driver. Extremely satisfied with the professionalism.</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">Z</div>
@@ -503,35 +756,44 @@
   <div class="form-section">
     <div class="form-header fade-up">
       <img src="assets/logo.png" alt="Sunrise Drivers">
-      <div class="label">Find My Driver</div>
+      <div class="section-label">Get Your Driver</div>
       <h2>Tell Us What You Need</h2>
       <p>Fill in your details. We reach out within 2 hours.</p>
     </div>
     <form id="lead-form" class="fade-up">
       <div class="form-grid">
         <div class="form-group">
-          <label>Full Name <span class="req">*</span></label>
-          <input type="text" name="fullName" placeholder="Your name" required>
+          <label for="fullName">Full Name <span class="req">*</span></label>
+          <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
         </div>
         <div class="form-group">
-          <label>Phone <span class="req">*</span></label>
-          <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+          <label for="phone">Phone <span class="req">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
         </div>
         <div class="form-group">
-          <label>City <span class="req">*</span></label>
-          <select name="city" required>
-            <option value="Hyderabad" selected>Hyderabad</option>
+          <label for="city">City <span class="req">*</span></label>
+          <select id="city" name="city" required onchange="updateAreaSuggestions()">
+            <option value="" disabled selected>Select city</option>
+            <option value="Hyderabad">Hyderabad</option>
             <option value="Bangalore">Bangalore</option>
+            <option disabled style="color:#3f3f46;">---</option>
+            <option disabled style="color:#3f3f46;">Mumbai (Coming Soon)</option>
+            <option disabled style="color:#3f3f46;">Delhi (Coming Soon)</option>
+            <option disabled style="color:#3f3f46;">Chennai (Coming Soon)</option>
+            <option disabled style="color:#3f3f46;">Pune (Coming Soon)</option>
           </select>
         </div>
         <div class="form-group">
-          <label>Area</label>
-          <input type="text" name="area" placeholder="e.g. Banjara Hills">
+          <label for="area">Area / Location <span class="req">*</span></label>
+          <div class="autocomplete-wrap">
+            <input type="text" id="area" name="area" placeholder="Start typing your area..." autocomplete="off" required>
+            <div class="autocomplete-list" id="area-suggestions"></div>
+          </div>
         </div>
         <div class="form-group">
-          <label>Vehicle <span class="req">*</span></label>
-          <select name="vehicle" required>
-            <option value="" disabled selected>Select</option>
+          <label for="vehicle">Vehicle Type <span class="req">*</span></label>
+          <select id="vehicle" name="vehicle" required>
+            <option value="" disabled selected>Select vehicle</option>
             <option value="Sedan">Sedan</option>
             <option value="SUV">SUV</option>
             <option value="Hatchback">Hatchback</option>
@@ -539,13 +801,13 @@
           </select>
         </div>
         <div class="form-group">
-          <label>Duty Hours</label>
-          <select name="dutyHours">
-            <option value="" disabled selected>Select</option>
-            <option value="8 hours">8 hours</option>
-            <option value="10 hours">10 hours</option>
-            <option value="12 hours">12 hours</option>
-            <option value="Flexible">Flexible</option>
+          <label for="workingHours">Working Hours <span class="req">*</span></label>
+          <select id="workingHours" name="workingHours" required>
+            <option value="" disabled selected>Select hours</option>
+            <option value="8 Hours">8 Hours</option>
+            <option value="10 Hours">10 Hours</option>
+            <option value="12 Hours">12 Hours</option>
+            <option value="In-house / Permanent">In-house / Permanent</option>
           </select>
         </div>
         <div class="form-group full">
@@ -554,24 +816,45 @@
             <label class="driver-type-card selected" onclick="selectDriverType(this)">
               <input type="radio" name="driverType" value="Professional" checked>
               <h4>Professional Driver</h4>
-              <p>Trained, verified &amp; experienced personal driver</p>
+              <p>Trained, verified, experienced personal driver</p>
             </label>
             <label class="driver-type-card" onclick="selectDriverType(this)">
               <input type="radio" name="driverType" value="Premium">
               <h4>Premium Driver</h4>
-              <p>Well-groomed, safari uniform, formal shoes, executive presentation</p>
+              <p>Safari uniform, formal shoes, executive presentation</p>
             </label>
           </div>
         </div>
+        <div class="form-group">
+          <label for="startDate">Preferred Start Date</label>
+          <input type="date" id="startDate" name="startDate">
+        </div>
+        <div class="form-group">
+          <label for="carePlan">Care Plan Preference</label>
+          <select id="carePlan" name="carePlan">
+            <option value="" disabled selected>Select plan</option>
+            <option value="Basic">Basic (&#8377;999/mo)</option>
+            <option value="Standard">Standard (&#8377;1,499/mo)</option>
+            <option value="Premium">Premium (&#8377;1,999/mo)</option>
+            <option value="Not Sure Yet">Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="notes">Additional Notes / Requirements</label>
+          <textarea id="notes" name="notes" placeholder="Any specific requirements, timings, or preferences..."></textarea>
+        </div>
       </div>
-      <button type="submit" class="btn-primary form-submit">Find My Driver &rarr;</button>
-      <p class="form-privacy">🔒 Secure. Only used to contact you about driver services.</p>
+      <button type="submit" class="btn-primary form-submit">Get Your Driver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+      <p class="form-privacy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Your information is secure and only used to contact you about driver services.
+      </p>
     </form>
     <div class="form-success" id="form-success">
-      <div class="check">✅</div>
+      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 16px;display:block;"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
       <h3>We Got Your Details!</h3>
       <p>Our team will reach out within 2 hours to confirm your requirement and assign a verified driver.</p>
-      <p style="margin-top: 16px;"><a href="https://wa.me/917997777265" class="btn-primary" style="margin-top: 12px;">Chat on WhatsApp &rarr;</a></p>
+      <p style="margin-top: 16px;"><a href="https://wa.me/917997777265" class="btn-primary" style="margin-top: 12px;">Chat on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></p>
     </div>
   </div>
 </section>
@@ -586,52 +869,52 @@
     <p class="footer-tagline">Professional driver placement since 2013. Trusted by 6,000+ families.</p>
     <p class="footer-address">3rd Floor, 6-3-348/B/401, Banjara Hills, Hyderabad - 500034</p>
     <p class="footer-legal">GSTIN: 36AFBFS5664L1ZH &nbsp;|&nbsp; PAN: AFBFS5664L</p>
-    <p class="footer-copy">&copy; 2026 Sunrise Drivers LLP &nbsp;&middot;&nbsp; Powered by <a href="https://zippyscale.com" target="_blank">ZippyScale</a></p>
+    <p class="footer-copy">&copy; 2026 Sunrise Drivers LLP &middot; Powered by <a href="https://zippyscale.com" target="_blank">ZippyScale</a></p>
   </div>
 </footer>
 
 <!-- FLOATING CTAs -->
 <div class="floating-ctas">
-  <a href="tel:+917997777265" class="float-btn float-phone" aria-label="Call">📞</a>
-  <a href="https://wa.me/917997777265" target="_blank" class="float-btn float-whatsapp" aria-label="WhatsApp">💬</a>
+  <a href="tel:+917997777265" class="float-btn float-phone" aria-label="Call us">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/917997777265" target="_blank" class="float-btn float-whatsapp" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
 </div>
 
 <script>
-// Service tabs data
+// SERVICE TABS
 const services = [
-  { icon: '🚗', title: 'Personal Drivers', desc: 'For families & professionals' },
-  { icon: '🏢', title: 'Corporate Chauffeurs', desc: 'For businesses & executives' },
-  { icon: '⭐', title: 'Valet Services', desc: 'For events & establishments' },
-  { icon: '🔒', title: 'Verified & Trained', desc: 'Background checked. Always.' }
+  { title: 'Personal Drivers', desc: 'For families and working professionals who need a reliable, full-time driver',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C1.4 11.3 1 12.1 1 13v3c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>' },
+  { title: 'Corporate Chauffeurs', desc: 'Executive-grade drivers for businesses, fleet management, and corporate accounts',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>' },
+  { title: 'Valet Services', desc: 'Trained valet professionals for events, restaurants, and hospitality establishments',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>' },
+  { title: 'Verified & Trained', desc: 'Every driver passes police verification, identity checks, and professional conduct training',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>' }
 ];
 function showService(i) {
   const d = document.getElementById('service-display');
-  d.querySelector('.icon').textContent = services[i].icon;
+  d.querySelector('.icon-wrap').innerHTML = services[i].icon;
   d.querySelector('h3').textContent = services[i].title;
   d.querySelector('p').textContent = services[i].desc;
-  document.querySelectorAll('.tab-btn').forEach((b, j) => b.classList.toggle('active', j === i));
+  document.querySelectorAll('.service-tab').forEach((b, j) => b.classList.toggle('active', j === i));
 }
 
-// City tabs
-function switchCity(city) {
-  document.querySelectorAll('.area-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('city-' + city).classList.add('active');
-  document.querySelectorAll('.city-tab').forEach(t => t.classList.remove('active'));
-  event.target.classList.add('active');
-}
-
-// Area data
+// CITY & AREA TABS
 const areaData = {
   hyd: [
-    { title: 'HITEC City & IT', areas: ['Gachibowli','HITEC City','Madhapur','Kondapur','Manikonda','Financial District'], time: '3-4 working days' },
+    { title: 'HITEC City & IT Corridor', areas: ['Gachibowli','HITEC City','Madhapur','Kondapur','Manikonda','Financial District'], time: '3-4 working days' },
     { title: 'Central Hyderabad', areas: ['Ameerpet','SR Nagar','Punjagutta','Begumpet','Somajiguda','Erragadda'], time: '3-4 working days' },
-    { title: 'Banjara & Jubilee', areas: ['Banjara Hills','Jubilee Hills','Film Nagar','Road No. 36','KBR Park Area','Panjagutta'], time: '3-4 working days' },
+    { title: 'Banjara & Jubilee Hills', areas: ['Banjara Hills','Jubilee Hills','Film Nagar','Road No. 36','KBR Park Area','Panjagutta'], time: '3-4 working days' },
     { title: 'Secunderabad', areas: ['Secunderabad','Bowenpally','Trimulgherry','Alwal','Sainikpuri','Malkajgiri'], time: '3-4 working days' },
     { title: 'North Zone', areas: ['Kukatpally','KPHB','Miyapur','Chandanagar','Nizampet','Bachupally'], time: '3-4 working days' },
     { title: 'South & East', areas: ['LB Nagar','Dilsukhnagar','Nagole','Uppal','Habsiguda','Tarnaka'], time: '3-4 working days' }
   ],
   blr: [
-    { title: 'Whitefield & IT', areas: ['Whitefield','ITPL','Marathahalli','Brookefield','Varthur','Kadugodi'], time: '7-10 working days' },
+    { title: 'Whitefield & IT Corridor', areas: ['Whitefield','ITPL','Marathahalli','Brookefield','Varthur','Kadugodi'], time: '7-10 working days' },
     { title: 'Koramangala & HSR', areas: ['Koramangala','HSR Layout','BTM Layout','Madiwala','JP Nagar','Jayanagar'], time: '7-10 working days' },
     { title: 'Indiranagar & MG Road', areas: ['Indiranagar','MG Road','Ulsoor','Richmond Town','Langford Town','Domlur'], time: '7-10 working days' },
     { title: 'Electronic City', areas: ['Electronic City','Bommasandra','Hosa Road','Begur','Hulimavu','Arekere'], time: '7-10 working days' },
@@ -639,6 +922,14 @@ const areaData = {
     { title: 'South Bangalore', areas: ['Banashankari','Kanakapura Road','Uttarahalli','Kumaraswamy Layout','Padmanabhanagar','Girinagar'], time: '7-10 working days' }
   ]
 };
+
+function switchCity(city) {
+  document.querySelectorAll('.area-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('city-' + city).classList.add('active');
+  document.querySelectorAll('.city-tab').forEach(t => t.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+}
+
 function switchArea(city, i) {
   const d = areaData[city][i];
   const content = document.getElementById(city + '-content');
@@ -648,14 +939,89 @@ function switchArea(city, i) {
   document.querySelectorAll('#' + city + '-tabs .area-tab').forEach((t, j) => t.classList.toggle('active', j === i));
 }
 
-// Testimonials
+// AREA AUTOCOMPLETE
+const allAreas = {
+  Hyderabad: [
+    'Gachibowli','HITEC City','Madhapur','Kondapur','Manikonda','Financial District',
+    'Ameerpet','SR Nagar','Punjagutta','Begumpet','Somajiguda','Erragadda',
+    'Banjara Hills','Jubilee Hills','Film Nagar','Road No. 36','KBR Park Area','Panjagutta',
+    'Secunderabad','Bowenpally','Trimulgherry','Alwal','Sainikpuri','Malkajgiri',
+    'Kukatpally','KPHB','Miyapur','Chandanagar','Nizampet','Bachupally',
+    'LB Nagar','Dilsukhnagar','Nagole','Uppal','Habsiguda','Tarnaka',
+    'Tolichowki','Attapur','Mehdipatnam','Masab Tank','Nampally','Charminar',
+    'Kompally','Medchal','Shamirpet','AS Rao Nagar','ECIL','Nacharam',
+    'Kokapet','Narsingi','Tellapur','Gopanpally','Nallagandla','Khajaguda'
+  ],
+  Bangalore: [
+    'Whitefield','ITPL','Marathahalli','Brookefield','Varthur','Kadugodi',
+    'Koramangala','HSR Layout','BTM Layout','Madiwala','JP Nagar','Jayanagar',
+    'Indiranagar','MG Road','Ulsoor','Richmond Town','Langford Town','Domlur',
+    'Electronic City','Bommasandra','Hosa Road','Begur','Hulimavu','Arekere',
+    'Hebbal','Yelahanka','Devanahalli','Thanisandra','Sahakara Nagar','RT Nagar',
+    'Banashankari','Kanakapura Road','Uttarahalli','Kumaraswamy Layout','Padmanabhanagar','Girinagar',
+    'Bellandur','Sarjapur Road','Haralur','Kadubeesanahalli','Outer Ring Road','Silk Board',
+    'Malleshwaram','Rajajinagar','Basaveshwara Nagar','Vijayanagar','Nagarbhavi','Kengeri'
+  ]
+};
+
+const areaInput = document.getElementById('area');
+const suggestionsList = document.getElementById('area-suggestions');
+let highlightedIndex = -1;
+
+function updateAreaSuggestions() {
+  areaInput.value = '';
+  suggestionsList.classList.remove('show');
+}
+
+areaInput.addEventListener('input', function() {
+  const city = document.getElementById('city').value;
+  const query = this.value.toLowerCase().trim();
+  if (!city || query.length < 1) { suggestionsList.classList.remove('show'); return; }
+  const areas = allAreas[city] || [];
+  const matches = areas.filter(a => a.toLowerCase().includes(query)).slice(0, 8);
+  if (matches.length === 0) { suggestionsList.classList.remove('show'); return; }
+  highlightedIndex = -1;
+  suggestionsList.innerHTML = matches.map((a, i) => {
+    const idx = a.toLowerCase().indexOf(query);
+    const highlighted = a.substring(0, idx) + '<span class="match">' + a.substring(idx, idx + query.length) + '</span>' + a.substring(idx + query.length);
+    return '<div class="autocomplete-item" data-value="' + a + '" data-index="' + i + '">' + highlighted + '</div>';
+  }).join('');
+  suggestionsList.classList.add('show');
+});
+
+suggestionsList.addEventListener('click', function(e) {
+  const item = e.target.closest('.autocomplete-item');
+  if (item) { areaInput.value = item.dataset.value; suggestionsList.classList.remove('show'); }
+});
+
+areaInput.addEventListener('keydown', function(e) {
+  const items = suggestionsList.querySelectorAll('.autocomplete-item');
+  if (!items.length) return;
+  if (e.key === 'ArrowDown') { e.preventDefault(); highlightedIndex = Math.min(highlightedIndex + 1, items.length - 1); updateHighlight(items); }
+  else if (e.key === 'ArrowUp') { e.preventDefault(); highlightedIndex = Math.max(highlightedIndex - 1, 0); updateHighlight(items); }
+  else if (e.key === 'Enter' && highlightedIndex >= 0) { e.preventDefault(); areaInput.value = items[highlightedIndex].dataset.value; suggestionsList.classList.remove('show'); }
+  else if (e.key === 'Escape') { suggestionsList.classList.remove('show'); }
+});
+
+function updateHighlight(items) {
+  items.forEach((item, i) => item.classList.toggle('highlighted', i === highlightedIndex));
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.autocomplete-wrap')) suggestionsList.classList.remove('show');
+});
+
+// TESTIMONIALS
 const testimonials = [
   { text: 'Mr. Jaipal responded the very next day with a highly experienced, disciplined driver. Extremely satisfied with the professionalism.', name: 'Zaheer Abbas Syed', role: 'CEO, Loan Genie', initial: 'Z' },
   { text: 'We needed a driver urgently for our fleet vehicles and Sunrise Drivers delivered within 48 hours. The quality has been consistent.', name: 'Naresh Kumar D', role: 'MD, Macromedia Digital Imaging', initial: 'N' },
   { text: 'The UPI AutoPay system is seamless. No more chasing payments or dealing with attendance issues. Highly recommended for busy professionals.', name: 'Priya Sharma', role: 'Tech Lead, Google', initial: 'P' },
   { text: 'We have been using Sunrise Drivers for our corporate fleet for 3 years. Zero complaints from our executives.', name: 'Rajesh Mehta', role: 'VP Operations, Deloitte', initial: 'R' }
 ];
+let currentTestimonial = 0;
+
 function showTestimonial(i) {
+  currentTestimonial = i;
   const t = testimonials[i];
   const card = document.getElementById('testimonial-display');
   card.querySelector('.testimonial-text').textContent = t.text;
@@ -665,19 +1031,28 @@ function showTestimonial(i) {
   document.querySelectorAll('.dot').forEach((d, j) => d.classList.toggle('active', j === i));
 }
 
-// Driver type selection
+// Auto-rotate testimonials
+setInterval(() => { showTestimonial((currentTestimonial + 1) % testimonials.length); }, 5000);
+
+// DRIVER TYPE
 function selectDriverType(el) {
   document.querySelectorAll('.driver-type-card').forEach(c => c.classList.remove('selected'));
   el.classList.add('selected');
 }
 
-// Form submission
+// SET MIN DATE FOR START DATE
+const startDateInput = document.getElementById('startDate');
+const today = new Date();
+today.setDate(today.getDate() + 3);
+startDateInput.min = today.toISOString().split('T')[0];
+
+// FORM SUBMISSION
 document.getElementById('lead-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   const form = e.target;
   const btn = form.querySelector('.form-submit');
   btn.disabled = true;
-  btn.textContent = 'Submitting...';
+  btn.innerHTML = 'Submitting...';
 
   const data = new FormData(form);
   const fullName = data.get('fullName').trim();
@@ -688,56 +1063,46 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
   const city = data.get('city');
   const area = data.get('area') || '';
   const vehicle = data.get('vehicle');
-  const dutyHours = data.get('dutyHours') || '';
+  const workingHours = data.get('workingHours') || '';
   const driverType = data.get('driverType');
+  const startDate = data.get('startDate') || '';
+  const carePlan = data.get('carePlan') || '';
+  const notes = data.get('notes') || '';
 
   const payload = {
-    firstName,
-    lastName,
-    phone: phone.startsWith('+91') ? phone : '+91' + phone.replace(/^0+/, ''),
+    firstName, lastName,
+    phone: phone.startsWith('+91') ? phone : '+91' + phone.replace(/^0+/, '').replace(/\s/g, ''),
     city,
     tags: ['sunrise-lead', 'sunrise-' + city.toLowerCase(), 'sunrise-' + vehicle.toLowerCase(), 'sunrise-' + driverType.toLowerCase()],
     customField: {
-      area: area,
-      vehicle_type: vehicle,
-      duty_hours: dutyHours,
-      driver_type: driverType
+      area, vehicle_type: vehicle, working_hours: workingHours,
+      driver_type: driverType, preferred_start_date: startDate,
+      care_plan_preference: carePlan, additional_notes: notes
     }
   };
 
   try {
-    // GHL API endpoint - replace TOKEN with active PIT
-    const GHL_LOCATION = 'DSK3kgZgwWoIRnAYf9uC';
-    const GHL_TOKEN = 'YOUR_PIT_TOKEN_HERE';
+    // GHL API endpoint — will be connected in Step 3
+    const GHL_LOCATION = 'SUNRISE_LOCATION_ID';
+    const GHL_TOKEN = 'SUNRISE_PIT_TOKEN';
 
     const res = await fetch('https://services.leadconnectorhq.com/contacts/', {
       method: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + GHL_TOKEN,
-        'Content-Type': 'application/json',
-        'Version': '2021-07-28'
-      },
-      body: JSON.stringify({
-        ...payload,
-        locationId: GHL_LOCATION
-      })
+      headers: { 'Authorization': 'Bearer ' + GHL_TOKEN, 'Content-Type': 'application/json', 'Version': '2021-07-28' },
+      body: JSON.stringify({ ...payload, locationId: GHL_LOCATION })
     });
-
-    if (res.ok) {
-      form.style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-      if (typeof fbq !== 'undefined') fbq('track', 'Lead');
-      return;
-    }
+    if (res.ok) { form.style.display = 'none'; document.getElementById('form-success').style.display = 'block'; if (typeof fbq !== 'undefined') fbq('track', 'Lead'); return; }
     throw new Error('API error');
   } catch (err) {
-    // Fallback: redirect to WhatsApp
     const msg = encodeURIComponent(
       'Hi, I need a ' + driverType + ' driver.\n' +
       'Name: ' + fullName + '\n' +
       'City: ' + city + (area ? ', ' + area : '') + '\n' +
       'Vehicle: ' + vehicle + '\n' +
-      (dutyHours ? 'Duty: ' + dutyHours + '\n' : '')
+      (workingHours ? 'Hours: ' + workingHours + '\n' : '') +
+      (carePlan ? 'Plan: ' + carePlan + '\n' : '') +
+      (startDate ? 'Start: ' + startDate + '\n' : '') +
+      (notes ? 'Notes: ' + notes + '\n' : '')
     );
     window.open('https://wa.me/917997777265?text=' + msg, '_blank');
     form.style.display = 'none';
@@ -745,18 +1110,15 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
   }
 });
 
-// Scroll animations
+// SCROLL ANIMATIONS
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-// Close mobile nav on link click
+// CLOSE MOBILE NAV
 document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
 });
