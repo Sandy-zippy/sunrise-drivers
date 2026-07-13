@@ -288,6 +288,16 @@
     .form-group select option { background: var(--bg2); color: var(--white); }
     .form-group select option:disabled { color: var(--gray2); }
     .form-group textarea { resize: vertical; min-height: 80px; }
+    .hours-grid { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: end; }
+    .hours-cell { display: flex; flex-direction: column; gap: 6px; }
+    .hours-lbl { font-size: 11px; color: var(--gray2); text-transform: uppercase; letter-spacing: 0.04em; }
+    input.hours-time { color-scheme: dark; cursor: pointer; }
+    .hours-result { min-width: 128px; }
+    .hours-val { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.35); border-radius: var(--radius); padding: 12px 16px; color: var(--amber); font-weight: 700; font-size: 15px; text-align: center; white-space: nowrap; }
+    .hours-inhouse { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--gray); font-weight: 500; margin-top: 12px; cursor: pointer; }
+    .hours-inhouse input { width: auto; cursor: pointer; }
+    .hours-inhouse strong { color: var(--white); }
+    @media (max-width: 560px) { .hours-grid { grid-template-columns: 1fr 1fr; } .hours-result { grid-column: 1 / -1; } }
 
     /* AREA AUTOCOMPLETE */
     .autocomplete-wrap { position: relative; }
@@ -819,15 +829,25 @@
             <option value="Luxury">Luxury</option>
           </select>
         </div>
-        <div class="form-group">
-          <label for="workingHours">Working Hours <span class="req">*</span></label>
-          <select id="workingHours" name="workingHours" required>
-            <option value="" disabled selected>Select hours</option>
-            <option value="8 Hours">8 Hours</option>
-            <option value="10 Hours">10 Hours</option>
-            <option value="12 Hours">12 Hours</option>
-            <option value="In-house / Permanent">In-house / Permanent</option>
-          </select>
+        <div class="form-group full">
+          <label>Working Hours <span class="req">*</span></label>
+          <div class="hours-grid">
+            <div class="hours-cell">
+              <span class="hours-lbl">Start time</span>
+              <input type="time" id="startTime" class="hours-time">
+            </div>
+            <div class="hours-cell">
+              <span class="hours-lbl">End time</span>
+              <input type="time" id="endTime" class="hours-time">
+            </div>
+            <div class="hours-cell hours-result">
+              <span class="hours-lbl">Total shift</span>
+              <span class="hours-val" id="hoursTotalVal">&mdash;</span>
+            </div>
+          </div>
+          <label class="hours-inhouse"><input type="checkbox" id="inhouseChk"> Live-in / no fixed shift &mdash; <strong>In-house / Permanent</strong></label>
+          <input type="hidden" id="workingHours" name="workingHours">
+          <input type="hidden" id="shiftTiming" name="shiftTiming">
         </div>
         <div class="form-group full">
           <label>Driver Type <span class="req">*</span></label>
@@ -1087,11 +1107,51 @@ onbType.addEventListener('change', function() {
   }
 });
 
+// WORKING HOURS — start/end time -> rounded shift bucket + exact times
+(function () {
+  const startEl = document.getElementById('startTime');
+  const endEl = document.getElementById('endTime');
+  const inhouseEl = document.getElementById('inhouseChk');
+  const valEl = document.getElementById('hoursTotalVal');
+  const whEl = document.getElementById('workingHours');
+  const stEl = document.getElementById('shiftTiming');
+  function fmt(t) {
+    let [h, m] = t.split(':').map(Number);
+    const ap = h < 12 ? 'AM' : 'PM';
+    let h12 = h % 12; if (h12 === 0) h12 = 12;
+    return h12 + ':' + String(m).padStart(2, '0') + ' ' + ap;
+  }
+  function compute() {
+    if (inhouseEl.checked) {
+      valEl.textContent = 'In-house'; whEl.value = 'In-house / Permanent'; stEl.value = 'In-house / Permanent'; return;
+    }
+    const s = startEl.value, e = endEl.value;
+    if (!s || !e) { valEl.textContent = '—'; whEl.value = ''; stEl.value = ''; return; }
+    const [sh, sm] = s.split(':').map(Number);
+    const [eh, em] = e.split(':').map(Number);
+    let mins = (eh * 60 + em) - (sh * 60 + sm);
+    if (mins <= 0) mins += 24 * 60; // overnight shift
+    const rawH = mins / 60;
+    const bucket = [8, 10, 12].find(b => rawH <= b + 0.001) || 12;
+    valEl.textContent = (rawH > 12 ? '12+ hours' : bucket + ' hours');
+    whEl.value = bucket + ' Hours';
+    stEl.value = fmt(s) + ' – ' + fmt(e);
+  }
+  startEl.addEventListener('input', compute);
+  endEl.addEventListener('input', compute);
+  inhouseEl.addEventListener('change', function () {
+    startEl.disabled = endEl.disabled = this.checked;
+    if (this.checked) { startEl.value = ''; endEl.value = ''; }
+    compute();
+  });
+})();
+
 // FORM SUBMISSION
 document.getElementById('lead-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   const form = e.target;
   const btn = form.querySelector('.form-submit');
+  const btnHtml = btn.innerHTML;
   btn.disabled = true;
   btn.innerHTML = 'Submitting...';
 
@@ -1105,6 +1165,8 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
   const area = data.get('area') || '';
   const vehicle = data.get('vehicle');
   const workingHours = data.get('workingHours') || '';
+  const shiftTiming = data.get('shiftTiming') || '';
+  if (!workingHours) { btn.disabled = false; btn.innerHTML = btnHtml; alert('Please set the working hours — pick a start & end time, or tick In-house / Permanent.'); return; }
   const driverType = data.get('driverType');
   const onboardingType = data.get('onboardingType') || '';
   const startDate = data.get('startDate') || '';
@@ -1129,7 +1191,8 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
     'Phone: ' + (phone.startsWith('+91') ? phone : '+91' + phone.replace(/^0+/, '').replace(/\s/g, '')) + '\n' +
     'Plan: ' + onboardingType + (carePlan ? ' (' + carePlan + ')' : '') + '\n' +
     'City/Area: ' + city + (area ? ' / ' + area : '') + '\n' +
-    'Vehicle: ' + vehicle + ' | ' + workingHours + ' | ' + driverType + '\n' +
+    'Vehicle: ' + vehicle + ' | ' + driverType + '\n' +
+    'Hours: ' + workingHours + (shiftTiming && shiftTiming !== 'In-house / Permanent' ? ' (' + shiftTiming + ')' : '') + '\n' +
     (startDate ? 'Start: ' + startDate + '\n' : '') +
     (notes ? 'Notes: ' + notes : '');
   fetch('https://services.leadconnectorhq.com/hooks/nN267sGAfjb5Xa3sNzbI/webhook-trigger/7fad7c25-2b75-47f3-9671-a97042c0edcc', {
@@ -1157,6 +1220,7 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
           {id: '4SukE4eHLjz9QR8nTHWN', field_value: area},
           {id: 'H1udctLi1i7OfywpVeE3', field_value: vehicle},
           {id: 'TimPtX6tr11rawilZeCK', field_value: workingHours},
+          {id: 'eHyw3kscCFFunn95VUSB', field_value: shiftTiming},
           {id: 't9uSlXJnXDrWPLT2jmik', field_value: driverType},
           {id: 'XFm6HHuFc5n3moxBkquD', field_value: startDate},
           {id: 'nzlNUUumXyrKUL81VthD', field_value: carePlan},
@@ -1194,7 +1258,7 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
       'Plan: ' + onboardingType + '\n' +
       'City: ' + city + (area ? ', ' + area : '') + '\n' +
       'Vehicle: ' + vehicle + '\n' +
-      (workingHours ? 'Hours: ' + workingHours + '\n' : '') +
+      (workingHours ? 'Hours: ' + workingHours + (shiftTiming && shiftTiming !== 'In-house / Permanent' ? ' (' + shiftTiming + ')' : '') + '\n' : '') +
       (carePlan ? 'Plan: ' + carePlan + '\n' : '') +
       (startDate ? 'Start: ' + startDate + '\n' : '') +
       (notes ? 'Notes: ' + notes + '\n' : '')
