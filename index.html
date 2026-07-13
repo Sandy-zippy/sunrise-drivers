@@ -314,6 +314,7 @@
     }
     .autocomplete-item:hover, .autocomplete-item.highlighted { background: var(--amber-glow); color: var(--white); }
     .autocomplete-item .match { color: var(--amber); font-weight: 600; }
+    .autocomplete-wrap input { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717A' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
 
     /* DRIVER TYPE CARDS */
     .driver-type-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -799,7 +800,7 @@
           <label for="phone">Phone <span class="req">*</span></label>
           <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
         </div>
-        <div class="form-group">
+        <div class="form-group full">
           <label for="city">City <span class="req">*</span></label>
           <select id="city" name="city" required onchange="updateAreaSuggestions()">
             <option value="" disabled selected>Select city</option>
@@ -988,25 +989,31 @@ function switchArea(city, i) {
 // AREA AUTOCOMPLETE
 const allAreas = {
   Hyderabad: [
-    'Gachibowli','HITEC City','Madhapur','Kondapur','Manikonda','Financial District',
-    'Ameerpet','SR Nagar','Punjagutta','Begumpet','Somajiguda','Erragadda',
-    'Banjara Hills','Jubilee Hills','Film Nagar','Road No. 36','KBR Park Area','Panjagutta',
-    'Secunderabad','Bowenpally','Trimulgherry','Alwal','Sainikpuri','Malkajgiri',
-    'Kukatpally','KPHB','Miyapur','Chandanagar','Nizampet','Bachupally',
-    'LB Nagar','Dilsukhnagar','Nagole','Uppal','Habsiguda','Tarnaka',
-    'Tolichowki','Attapur','Mehdipatnam','Masab Tank','Nampally','Charminar',
-    'Kompally','Medchal','Shamirpet','AS Rao Nagar','ECIL','Nacharam',
-    'Kokapet','Narsingi','Tellapur','Gopanpally','Nallagandla','Khajaguda'
+    'Gachibowli','HITEC City','Madhapur','Kondapur','Manikonda','Financial District','Nanakramguda',
+    'Kokapet','Narsingi','Tellapur','Gopanpally','Nallagandla','Khajaguda','Puppalaguda','Kavuri Hills',
+    'Jubilee Enclave','Hafeezpet','Lingampally','Chandanagar','Miyapur','Bachupally','Nizampet','Pragathi Nagar',
+    'Kukatpally','KPHB','Moosapet','Balanagar','Jeedimetla','Suchitra','Kompally','Medchal','Shamirpet',
+    'Ameerpet','SR Nagar','Sanjeeva Reddy Nagar','Yousufguda','Borabanda','Erragadda','Punjagutta',
+    'Somajiguda','Khairatabad','Lakdikapul','Nampally','Abids','Koti','Sultan Bazar',
+    'Banjara Hills','Jubilee Hills','Film Nagar','Road No. 36','KBR Park','Begumpet','Prakash Nagar',
+    'Secunderabad','Marredpally','Paradise','Karkhana','Bowenpally','Trimulgherry','Alwal','Sainikpuri',
+    'AS Rao Nagar','ECIL','Kushaiguda','Malkajgiri','Tarnaka','Nacharam','Mallapur','Habsiguda','Uppal',
+    'Boduppal','Nagole','LB Nagar','Dilsukhnagar','Kothapet','Chaitanyapuri','Vanasthalipuram','Saroornagar',
+    'Hayathnagar','Mehdipatnam','Tolichowki','Attapur','Rajendranagar','Shamshabad','Malakpet','Santoshnagar',
+    'Charminar','Falaknuma','Manikonda'
   ],
   Bangalore: [
-    'Whitefield','ITPL','Marathahalli','Brookefield','Varthur','Kadugodi',
-    'Koramangala','HSR Layout','BTM Layout','Madiwala','JP Nagar','Jayanagar',
-    'Indiranagar','MG Road','Ulsoor','Richmond Town','Langford Town','Domlur',
-    'Electronic City','Bommasandra','Hosa Road','Begur','Hulimavu','Arekere',
-    'Hebbal','Yelahanka','Devanahalli','Thanisandra','Sahakara Nagar','RT Nagar',
-    'Banashankari','Kanakapura Road','Uttarahalli','Kumaraswamy Layout','Padmanabhanagar','Girinagar',
-    'Bellandur','Sarjapur Road','Haralur','Kadubeesanahalli','Outer Ring Road','Silk Board',
-    'Malleshwaram','Rajajinagar','Basaveshwara Nagar','Vijayanagar','Nagarbhavi','Kengeri'
+    'Whitefield','ITPL','Hoodi','Mahadevapura','Kundalahalli','Brookefield','Marathahalli','Munnekollal',
+    'Varthur','Panathur','Kadugodi','Bellandur','Sarjapur Road','Haralur','Kaikondrahalli','Iblur',
+    'Kadubeesanahalli','Outer Ring Road','Silk Board','HSR Layout','Koramangala','BTM Layout','Madiwala','Ejipura',
+    'JP Nagar','Jayanagar','Wilson Garden','Banashankari','Kanakapura Road','Uttarahalli','Kumaraswamy Layout',
+    'Padmanabhanagar','Girinagar','Konanakunte','JP Nagar 7th Phase',
+    'Indiranagar','MG Road','Ulsoor','Domlur','Richmond Town','Langford Town','Shivajinagar','Frazer Town',
+    'Cox Town','Benson Town','Cunningham Road','Brigade Road','Electronic City','Bommasandra','Hosa Road','Begur',
+    'Hulimavu','Arekere','Bannerghatta Road','Gottigere','Hebbal','Yelahanka','Devanahalli','Thanisandra',
+    'Sahakara Nagar','RT Nagar','Nagawara','Kalyan Nagar','HBR Layout','Hennur','Banaswadi','Ramamurthy Nagar',
+    'Malleshwaram','Rajajinagar','Basaveshwara Nagar','Vijayanagar','Nagarbhavi','Kengeri','RR Nagar','Nayandahalli',
+    'Yeshwanthpur','Peenya','Mathikere','Jalahalli','Sadashivanagar','Seshadripuram','Vidyaranyapura','Sanjaynagar'
   ]
 };
 
@@ -1019,25 +1026,35 @@ function updateAreaSuggestions() {
   suggestionsList.classList.remove('show');
 }
 
-areaInput.addEventListener('input', function() {
+function openAreas() {
   const city = document.getElementById('city').value;
-  const query = this.value.toLowerCase().trim();
-  if (!city || query.length < 1) { suggestionsList.classList.remove('show'); return; }
+  const query = areaInput.value.toLowerCase().trim();
+  if (!city) {
+    suggestionsList.innerHTML = '<div class="autocomplete-item" style="opacity:0.55;cursor:default;">Please select your city above first</div>';
+    suggestionsList.classList.add('show');
+    return;
+  }
   const areas = allAreas[city] || [];
-  const matches = areas.filter(a => a.toLowerCase().includes(query)).slice(0, 8);
-  if (matches.length === 0) { suggestionsList.classList.remove('show'); return; }
+  const matches = (query ? areas.filter(a => a.toLowerCase().includes(query)) : areas).slice(0, 60);
+  if (!matches.length) { suggestionsList.classList.remove('show'); return; }
   highlightedIndex = -1;
   suggestionsList.innerHTML = matches.map((a, i) => {
-    const idx = a.toLowerCase().indexOf(query);
-    const highlighted = a.substring(0, idx) + '<span class="match">' + a.substring(idx, idx + query.length) + '</span>' + a.substring(idx + query.length);
-    return '<div class="autocomplete-item" data-value="' + a + '" data-index="' + i + '">' + highlighted + '</div>';
+    let label = a;
+    if (query) {
+      const idx = a.toLowerCase().indexOf(query);
+      if (idx >= 0) label = a.substring(0, idx) + '<span class="match">' + a.substring(idx, idx + query.length) + '</span>' + a.substring(idx + query.length);
+    }
+    return '<div class="autocomplete-item" data-value="' + a + '" data-index="' + i + '">' + label + '</div>';
   }).join('');
   suggestionsList.classList.add('show');
-});
+}
+
+areaInput.addEventListener('focus', openAreas);
+areaInput.addEventListener('input', openAreas);
 
 suggestionsList.addEventListener('click', function(e) {
   const item = e.target.closest('.autocomplete-item');
-  if (item) { areaInput.value = item.dataset.value; suggestionsList.classList.remove('show'); }
+  if (item && item.dataset.value) { areaInput.value = item.dataset.value; suggestionsList.classList.remove('show'); }
 });
 
 areaInput.addEventListener('keydown', function(e) {
@@ -1045,7 +1062,7 @@ areaInput.addEventListener('keydown', function(e) {
   if (!items.length) return;
   if (e.key === 'ArrowDown') { e.preventDefault(); highlightedIndex = Math.min(highlightedIndex + 1, items.length - 1); updateHighlight(items); }
   else if (e.key === 'ArrowUp') { e.preventDefault(); highlightedIndex = Math.max(highlightedIndex - 1, 0); updateHighlight(items); }
-  else if (e.key === 'Enter' && highlightedIndex >= 0) { e.preventDefault(); areaInput.value = items[highlightedIndex].dataset.value; suggestionsList.classList.remove('show'); }
+  else if (e.key === 'Enter' && highlightedIndex >= 0 && items[highlightedIndex].dataset.value) { e.preventDefault(); areaInput.value = items[highlightedIndex].dataset.value; suggestionsList.classList.remove('show'); }
   else if (e.key === 'Escape') { suggestionsList.classList.remove('show'); }
 });
 
