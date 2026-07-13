@@ -1110,6 +1110,20 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
     }
   };
 
+  // Owner WhatsApp alert → GHL inbound-webhook workflow → Jaipal (+91 79977 77265)
+  const ownerSummary =
+    'Name: ' + fullName + '\n' +
+    'Phone: ' + (phone.startsWith('+91') ? phone : '+91' + phone.replace(/^0+/, '').replace(/\s/g, '')) + '\n' +
+    'Plan: ' + onboardingType + (carePlan ? ' (' + carePlan + ')' : '') + '\n' +
+    'City/Area: ' + city + (area ? ' / ' + area : '') + '\n' +
+    'Vehicle: ' + vehicle + ' | ' + workingHours + ' | ' + driverType + '\n' +
+    (startDate ? 'Start: ' + startDate + '\n' : '') +
+    (notes ? 'Notes: ' + notes : '');
+  fetch('https://services.leadconnectorhq.com/hooks/nN267sGAfjb5Xa3sNzbI/webhook-trigger/7fad7c25-2b75-47f3-9671-a97042c0edcc', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ phone: '+917997777265', firstName: 'Jaipal', summary: ownerSummary })
+  }).catch(function () {});
+
   try {
     const GHL_LOCATION = 'nN267sGAfjb5Xa3sNzbI';
     const GHL_TOKEN = 'pit-62c020cd-7045-4872-a824-70605d2d6ed8';
