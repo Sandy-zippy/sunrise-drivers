@@ -1267,7 +1267,17 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
     await fetch('https://services.leadconnectorhq.com/contacts/uG400IGxCr55XlZPyY4X', {
       method: 'PUT',
       headers: { 'Authorization': 'Bearer ' + GHL_TOKEN, 'Content-Type': 'application/json', 'Version': '2021-07-28' },
-      body: JSON.stringify({ customFields: [{ id: '6iPJTFJZOhB27qFCiXO5', field_value: ownerSummaryLine }] })
+      body: JSON.stringify({ customFields: [
+        { id: '6iPJTFJZOhB27qFCiXO5', field_value: ownerSummaryLine },
+        { id: 'Kuvj9NmkFews9AqDnlXt', field_value: fullName },
+        { id: 'mfoi4ulW0DL3y31NUCLS', field_value: (phone.startsWith('+91') ? phone : '+91' + phone.replace(/^0+/, '').replace(/\s/g, '')) },
+        { id: 'wt94DDCHCVJbjVCTv8Xj', field_value: onboardingType + (carePlan ? ' (' + carePlan + ')' : '') },
+        { id: 'hm8Sx4xprMyIG8sVd73y', field_value: city + (area ? ' / ' + area : '') },
+        { id: 'P8BSGCgTwg6LcwsvDCkL', field_value: vehicle + ' (' + driverType + ')' },
+        { id: 'ywZFHYH96pMGe4LgcPh1', field_value: workingHours + (shiftTiming && shiftTiming !== 'In-house / Permanent' ? ' ' + shiftTiming : '') },
+        { id: '16e1bTy829wly1djvAfT', field_value: startDate || '—' },
+        { id: 'CHuZNtfVGiUnnbUukL8x', field_value: (notes || '—').replace(/[\r\n\t]+/g, ' ') }
+      ] })
     }).catch(function () {});
     fetch('https://services.leadconnectorhq.com/hooks/nN267sGAfjb5Xa3sNzbI/webhook-trigger/c8ed2be4-cfec-4417-84f4-a42ecd8ca7d2', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
