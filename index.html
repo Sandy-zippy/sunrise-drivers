@@ -1267,7 +1267,7 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
       headers: { 'Authorization': 'Bearer ' + GHL_TOKEN, 'Content-Type': 'application/json', 'Version': '2021-07-28' },
       body: JSON.stringify({ customFields: [{ id: '6iPJTFJZOhB27qFCiXO5', field_value: ownerSummary }] })
     }).catch(function () {});
-    fetch('https://services.leadconnectorhq.com/hooks/nN267sGAfjb5Xa3sNzbI/webhook-trigger/7fad7c25-2b75-47f3-9671-a97042c0edcc', {
+    fetch('https://services.leadconnectorhq.com/hooks/nN267sGAfjb5Xa3sNzbI/webhook-trigger/c8ed2be4-cfec-4417-84f4-a42ecd8ca7d2', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ phone: '+917997777265', firstName: 'Jaipal', summary: ownerSummary })
     }).catch(function () {});
