@@ -1249,8 +1249,17 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
     const contactData = await contactRes.json();
     const contactId = contactData.contact.id;
 
-    // Step 2: Create opportunity in pipeline
-    await fetch('https://services.leadconnectorhq.com/opportunities/', {
+    // Step 2: Create opportunity in pipeline — auto-fill amounts from the selected plan.
+    // Opportunity Value = onboarding fee (Care ₹9,999 / Standard ₹17,700). Monthly care amount → Subscription Amount.
+    var monthlyMap = { 'Basic': 999, 'Essential': 1499, 'Premium': 1999 };
+    var isCare = (onboardingType === 'Care Plan');
+    var onboardingFee = isCare ? 9999 : 17700;
+    var oppFields = [ { id: 'PPzG7tPcEcMMJzkeQUpQ', field_value: onboardingFee } ]; // Onboarding Fee
+    if (isCare) {
+      oppFields.push({ id: 'GqmWeQEebIpk6pab9Ymr', field_value: carePlan });                                  // Care Plan Tier
+      if (monthlyMap[carePlan]) oppFields.push({ id: 'nfuuHwXVocvLSQMcbzWH', field_value: monthlyMap[carePlan] }); // Subscription Amount (monthly)
+    }
+    var oppRes = await fetch('https://services.leadconnectorhq.com/opportunities/', {
       method: 'POST',
       headers: { 'Authorization': 'Bearer ' + GHL_TOKEN, 'Content-Type': 'application/json', 'Version': '2021-07-28' },
       body: JSON.stringify({
@@ -1259,9 +1268,22 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
         name: fullName + ' - ' + onboardingType + ' / ' + driverType + ' Driver (' + city + ')',
         pipelineStageId: NEW_LEAD_STAGE,
         status: 'open',
-        contactId: contactId
+        contactId: contactId,
+        monetaryValue: onboardingFee
       })
     });
+    // set opportunity custom-field amounts (separate PUT — reliable across API versions)
+    try {
+      var oppJson = await oppRes.json();
+      var newOppId = oppJson && oppJson.opportunity && oppJson.opportunity.id;
+      if (newOppId) {
+        await fetch('https://services.leadconnectorhq.com/opportunities/' + newOppId, {
+          method: 'PUT',
+          headers: { 'Authorization': 'Bearer ' + GHL_TOKEN, 'Content-Type': 'application/json', 'Version': '2021-07-28' },
+          body: JSON.stringify({ customFields: oppFields })
+        });
+      }
+    } catch (e) {}
 
     // Step 3: Owner WhatsApp — set Jaipal's summary field FIRST, then trigger the workflow webhook
     await fetch('https://services.leadconnectorhq.com/contacts/uG400IGxCr55XlZPyY4X', {
