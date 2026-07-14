@@ -1264,6 +1264,18 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
       })
     });
 
+    // Step 3: Owner email alert -> admin@caresunrisedrivers.com
+    fetch('https://services.leadconnectorhq.com/conversations/messages', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + GHL_TOKEN, 'Content-Type': 'application/json', 'Version': '2021-04-15' },
+      body: JSON.stringify({
+        type: 'Email',
+        contactId: 'bUXzj01oxaXQsHCfqNZj',
+        subject: 'New website lead — ' + fullName + ' (' + city + ')',
+        html: '<p><b>New website lead — Sunrise Drivers</b></p><pre style="font-family:monospace;font-size:14px">' + ownerSummary + '</pre><p>Open GHL to view and action this lead.</p>'
+      })
+    }).catch(function () {});
+
     form.style.display = 'none';
     document.getElementById('form-success').style.display = 'block';
     if (typeof fbq !== 'undefined') fbq('track', 'Lead');
