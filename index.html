@@ -1245,9 +1245,35 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
         ]
       })
     });
-    if (!contactRes.ok) throw new Error('Contact creation failed');
     const contactData = await contactRes.json();
-    const contactId = contactData.contact.id;
+    let contactId;
+    if (contactRes.ok && contactData.contact) {
+      contactId = contactData.contact.id;
+    } else if (contactData.meta && contactData.meta.contactId) {
+      // Returning enquiry (same phone) — reuse the existing contact and refresh its fields
+      contactId = contactData.meta.contactId;
+      await fetch('https://services.leadconnectorhq.com/contacts/' + contactId, {
+        method: 'PUT',
+        headers: { 'Authorization': 'Bearer ' + GHL_TOKEN, 'Content-Type': 'application/json', 'Version': '2021-07-28' },
+        body: JSON.stringify({ customFields: [
+          {id: '4SukE4eHLjz9QR8nTHWN', field_value: area},
+          {id: 'H1udctLi1i7OfywpVeE3', field_value: vehicle},
+          {id: 'TimPtX6tr11rawilZeCK', field_value: workingHours},
+          {id: 'eHyw3kscCFFunn95VUSB', field_value: shiftTiming},
+          {id: 't9uSlXJnXDrWPLT2jmik', field_value: driverType},
+          {id: 'XFm6HHuFc5n3moxBkquD', field_value: startDate},
+          {id: 'nzlNUUumXyrKUL81VthD', field_value: carePlan},
+          {id: 'Rapn9TLIh331yZuSFtww', field_value: onboardingType},
+          {id: 'Vived2GgrvPRI0yEAlW5', field_value: notes},
+          // reset payment state so a new enquiry starts fresh (no stale link/code)
+          {id: 'awP0A0vvAzBP4isQmxkj', field_value: ''},
+          {id: '4SDz7jQ6hOoLwkWdjRLM', field_value: ''},
+          {id: 'dC5CREBs0SRVFXqga3yQ', field_value: ''}
+        ] })
+      }).catch(function () {});
+    } else {
+      throw new Error('Contact creation failed');
+    }
 
     // Step 2: Create opportunity in pipeline — auto-fill amounts from the selected plan.
     // Opportunity Value = onboarding fee (Care ₹9,999 / Standard ₹17,700). Monthly care amount → Subscription Amount.
