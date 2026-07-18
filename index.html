@@ -1283,7 +1283,12 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
     var oppFields = [ { id: 'PPzG7tPcEcMMJzkeQUpQ', field_value: onboardingFee } ]; // Onboarding Fee
     if (isCare) {
       oppFields.push({ id: 'GqmWeQEebIpk6pab9Ymr', field_value: carePlan });                                  // Care Plan Tier
-      if (monthlyMap[carePlan]) oppFields.push({ id: 'nfuuHwXVocvLSQMcbzWH', field_value: monthlyMap[carePlan] }); // Subscription Amount (monthly)
+      if (monthlyMap[carePlan]) {
+        oppFields.push({ id: 'nfuuHwXVocvLSQMcbzWH', field_value: monthlyMap[carePlan] });                       // Subscription Amount (monetary)
+        oppFields.push({ id: '8J9Qf9wRL2iKnWfwJfO4', field_value: monthlyMap[carePlan].toLocaleString('en-IN') }); // Monthly Fee Text ("1,499") — clean ₹ in WhatsApp
+      }
+      oppFields.push({ id: 'iSLuriU4zzcbbQ9gc89l', field_value: '48 hours' });                                   // Matching ETA (A3 timeline)
+      oppFields.push({ id: 'sooN12HQXoCuPrYQx87m', field_value: 'weekly' });                                     // Update Cadence (A4)
     }
     var oppRes = await fetch('https://services.leadconnectorhq.com/opportunities/', {
       method: 'POST',
