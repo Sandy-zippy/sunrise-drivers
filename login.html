@@ -6,47 +6,40 @@
   <meta name="robots" content="noindex,nofollow">
   <title>Staff Portal — Sunrise Drivers</title>
   <link rel="icon" href="assets/logo.png">
-  <!-- Hand off to the attendance/operations portal (its own admin login gates access) -->
-  <meta http-equiv="refresh" content="1;url=https://script.google.com/macros/s/AKfycbxrvooGslCcUBOAQHoa_GPfGVIpc1BdMm0eEFLSQ3yZa_z2wLsqwUXT7ZkLxeuWMFDUwg/exec">
   <style>
-    :root{
-      --bg:#09090B; --bg3:#18181B; --amber:#F59E0B; --amber2:#D97706;
-      --white:#FAFAFA; --gray:#A1A1AA; --gray2:#52525B;
-      --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    }
+    :root{ --bg:#09090B; --amber:#F59E0B; --gray2:#52525B; }
     *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:var(--font);background:var(--bg);color:var(--white);min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;-webkit-font-smoothing:antialiased;}
-    .card{max-width:420px;width:100%;}
-    .logo{height:44px;margin-bottom:24px;}
-    h1{font-size:22px;font-weight:700;letter-spacing:0.3px;margin-bottom:10px;}
-    p{color:var(--gray);font-size:14px;line-height:1.6;margin-bottom:28px;}
-    .spinner{width:38px;height:38px;border:3px solid rgba(245,158,11,0.2);border-top-color:var(--amber);border-radius:50%;margin:0 auto 26px;animation:spin 0.8s linear infinite;}
+    html,body{height:100%;background:var(--bg);overflow:hidden;}
+    /* Loading splash shown until the portal iframe finishes loading */
+    #loader{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--bg);z-index:2;transition:opacity .4s;}
+    #loader img{height:40px;margin-bottom:22px;}
+    .spinner{width:34px;height:34px;border:3px solid rgba(245,158,11,.2);border-top-color:var(--amber);border-radius:50%;animation:spin .8s linear infinite;}
     @keyframes spin{to{transform:rotate(360deg);}}
-    .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--amber),var(--amber2));color:#000;font-weight:700;font-size:14px;padding:13px 26px;border-radius:10px;text-decoration:none;box-shadow:0 0 20px rgba(245,158,11,0.3);transition:transform 0.2s;}
-    .btn:hover{transform:translateY(-2px);}
-    .back{display:block;margin-top:20px;color:var(--gray2);font-size:13px;text-decoration:none;}
-    .back:hover{color:var(--gray);}
-    .note{margin-top:30px;font-size:12px;color:var(--gray2);}
+    #loader p{margin-top:18px;color:var(--gray2);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:13px;}
+    /* The portal, embedded so Google's app bar never shows and the URL stays on our domain */
+    iframe{position:fixed;inset:0;width:100%;height:100%;border:0;z-index:1;}
   </style>
 </head>
 <body>
-  <div class="card">
-    <img src="assets/logo.png" alt="Sunrise Drivers" class="logo">
+  <div id="loader">
+    <img src="assets/logo.png" alt="Sunrise Drivers">
     <div class="spinner"></div>
-    <h1>Opening the Staff Portal</h1>
-    <p>Redirecting you to the Sunrise Drivers operations portal. Sign in with your staff credentials.</p>
-    <a class="btn" href="https://script.google.com/macros/s/AKfycbxrvooGslCcUBOAQHoa_GPfGVIpc1BdMm0eEFLSQ3yZa_z2wLsqwUXT7ZkLxeuWMFDUwg/exec">
-      Continue to Portal
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-    </a>
-    <a class="back" href="index.html">← Back to site</a>
-    <p class="note">For Sunrise Drivers staff only.</p>
+    <p>Loading the staff portal…</p>
   </div>
+  <iframe
+    id="portal"
+    title="Sunrise Drivers Staff Portal"
+    src="https://script.google.com/macros/s/AKfycbxrvooGslCcUBOAQHoa_GPfGVIpc1BdMm0eEFLSQ3yZa_z2wLsqwUXT7ZkLxeuWMFDUwg/exec"
+    allow="clipboard-read; clipboard-write"></iframe>
   <script>
-    // JS fallback in case the meta-refresh is blocked
-    setTimeout(function(){
-      window.location.replace("https://script.google.com/macros/s/AKfycbxrvooGslCcUBOAQHoa_GPfGVIpc1BdMm0eEFLSQ3yZa_z2wLsqwUXT7ZkLxeuWMFDUwg/exec");
-    }, 1000);
+    var f = document.getElementById('portal');
+    var loader = document.getElementById('loader');
+    f.addEventListener('load', function(){
+      loader.style.opacity = '0';
+      setTimeout(function(){ loader.style.display = 'none'; }, 400);
+    });
+    // Safety: hide the loader after 6s even if the load event is swallowed
+    setTimeout(function(){ loader.style.opacity='0'; setTimeout(function(){loader.style.display='none';},400); }, 6000);
   </script>
 </body>
 </html>
