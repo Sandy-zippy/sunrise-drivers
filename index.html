@@ -1197,7 +1197,7 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
     firstName, lastName,
     phone: phone.startsWith('+91') ? phone : '+91' + phone.replace(/^0+/, '').replace(/\s/g, ''),
     city,
-    tags: ['sunrise-lead', 'sunrise-' + city.toLowerCase(), 'sunrise-' + vehicle.toLowerCase(), 'sunrise-' + driverType.toLowerCase(), (onboardingType === 'Care Plan' ? 'sunrise-careplan' : 'sunrise-standardplan')],
+    tags: ['sunrise-lead', 'sunrise-' + city.toLowerCase(), 'sunrise-' + vehicle.toLowerCase(), 'sunrise-' + driverType.toLowerCase(), (onboardingType === 'Care Plan' ? 'sunrise-careplan' : 'sunrise-standardplan'), (onboardingType === 'Care Plan' ? 'plan-care' : 'plan-standard')],
     customField: {
       area, vehicle_type: vehicle, working_hours: workingHours,
       driver_type: driverType, preferred_start_date: startDate,
@@ -1277,6 +1277,24 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
     } else {
       throw new Error('Contact creation failed');
     }
+
+    // Step 1b: Plan-routing tag. The A-series stage workflows (A1/A3/A7/A8/A9) each exist as a
+    // Care twin and a Standard twin, and the losing twin is silenced by an if/else guard on this
+    // tag. It used to be stamped by the 5-minute cloud reconciler, so a lead who reached the next
+    // stage before that ran got no WhatsApp at all. We know the plan right here, so stamp it now.
+    // The DELETE first corrects a returning enquiry who switched plans (otherwise both twins fire).
+    var planTag = (onboardingType === 'Care Plan') ? 'plan-care' : 'plan-standard';
+    var oppositePlanTag = (planTag === 'plan-care') ? 'plan-standard' : 'plan-care';
+    await fetch('https://services.leadconnectorhq.com/contacts/' + contactId + '/tags', {
+      method: 'DELETE',
+      headers: { 'Authorization': 'Bearer ' + GHL_TOKEN, 'Content-Type': 'application/json', 'Version': '2021-07-28' },
+      body: JSON.stringify({ tags: [oppositePlanTag] })
+    }).catch(function () {});
+    await fetch('https://services.leadconnectorhq.com/contacts/' + contactId + '/tags', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + GHL_TOKEN, 'Content-Type': 'application/json', 'Version': '2021-07-28' },
+      body: JSON.stringify({ tags: [planTag] })
+    }).catch(function () {});
 
     // Step 2: Create opportunity in pipeline — auto-fill amounts from the selected plan.
     // Opportunity Value = onboarding fee (Care ₹9,999 / Standard ₹17,700). Monthly care amount → Subscription Amount.
