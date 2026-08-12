@@ -1186,8 +1186,19 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
   const vehicle = data.get('vehicle');
   const workingHours = data.get('workingHours') || '';
   const shiftTiming = data.get('shiftTiming') || '';
-  const startTimeVal = document.getElementById('startTime').value || '';
-  const endTimeVal = document.getElementById('endTime').value || '';
+  // GHL's opportunity-fields panel can't render a TIME-type custom field (confirmed live,
+  // 2026-08-12 — API accepts and stores it fine, but it silently never appears in the UI),
+  // so Reporting Time / End Time are plain text fields; format as readable 12-hour times
+  // rather than pushing the raw 24-hour "HH:MM" from the native time input.
+  function fmt12(t) {
+    if (!t) return '';
+    var parts = t.split(':').map(Number), h = parts[0], m = parts[1];
+    var ap = h < 12 ? 'AM' : 'PM';
+    var h12 = h % 12; if (h12 === 0) h12 = 12;
+    return h12 + ':' + String(m).padStart(2, '0') + ' ' + ap;
+  }
+  const startTimeVal = fmt12(document.getElementById('startTime').value);
+  const endTimeVal = fmt12(document.getElementById('endTime').value);
   if (!workingHours) { btn.disabled = false; btn.innerHTML = btnHtml; alert('Please set the working hours — pick a start & end time, or tick In-house / Permanent.'); return; }
   const driverType = data.get('driverType');
   const onboardingType = data.get('onboardingType') || '';
@@ -1308,8 +1319,8 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
     // Driver Assignment group — pre-fill from what the client actually requested, so these
     // are already correct by the time staff assigns a driver (In-house/Permanent has no fixed
     // start/end, so Reporting/End Time are only sent when a real time was picked).
-    if (startTimeVal) oppFields.push({ id: 'Pft6Lq9wvs0ARyLLzFv8', field_value: startTimeVal }); // Reporting Time
-    if (endTimeVal)   oppFields.push({ id: 'pHzDvpkyhDix0CBWpo4X', field_value: endTimeVal });   // End Time
+    if (startTimeVal) oppFields.push({ id: 'lIa9WyX4JGC5YhqyPjit', field_value: startTimeVal }); // Reporting Time
+    if (endTimeVal)   oppFields.push({ id: 'TCRw8FluLWgNGWr8sZYT', field_value: endTimeVal });   // End Time
     if (workingHours) oppFields.push({ id: 'DJTFEmeC0ZL4MYpLMAW3', field_value: workingHours }); // Total Shift Time
 
     // Fixed driver salary by type + shift length (Sunrise's pay rate to the driver, not the
