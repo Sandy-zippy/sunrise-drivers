@@ -1186,6 +1186,8 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
   const vehicle = data.get('vehicle');
   const workingHours = data.get('workingHours') || '';
   const shiftTiming = data.get('shiftTiming') || '';
+  const startTimeVal = document.getElementById('startTime').value || '';
+  const endTimeVal = document.getElementById('endTime').value || '';
   if (!workingHours) { btn.disabled = false; btn.innerHTML = btnHtml; alert('Please set the working hours — pick a start & end time, or tick In-house / Permanent.'); return; }
   const driverType = data.get('driverType');
   const onboardingType = data.get('onboardingType') || '';
@@ -1302,6 +1304,25 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
     var isCare = (onboardingType === 'Care Plan');
     var onboardingFee = isCare ? 9999 : 17700;
     var oppFields = [ { id: 'PPzG7tPcEcMMJzkeQUpQ', field_value: onboardingFee } ]; // Onboarding Fee
+
+    // Driver Assignment group — pre-fill from what the client actually requested, so these
+    // are already correct by the time staff assigns a driver (In-house/Permanent has no fixed
+    // start/end, so Reporting/End Time are only sent when a real time was picked).
+    if (startTimeVal) oppFields.push({ id: 'Pft6Lq9wvs0ARyLLzFv8', field_value: startTimeVal }); // Reporting Time
+    if (endTimeVal)   oppFields.push({ id: 'pHzDvpkyhDix0CBWpo4X', field_value: endTimeVal });   // End Time
+    if (workingHours) oppFields.push({ id: 'DJTFEmeC0ZL4MYpLMAW3', field_value: workingHours }); // Total Shift Time
+
+    // Fixed driver salary by type + shift length (Sunrise's pay rate to the driver, not the
+    // client's fee) — same lookup table for every driver of that type/shift, independent of
+    // which specific driver ends up assigned. Written to the existing Basic Pay field used by
+    // the payroll WhatsApp reports.
+    var SALARY_MATRIX = {
+      'Professional': { '8 Hours': 22000, '10 Hours': 24000, '12 Hours': 28000, 'In-house / Permanent': 30000 },
+      'Premium':       { '8 Hours': 24000, '10 Hours': 27000, '12 Hours': 32000, 'In-house / Permanent': 34000 }
+    };
+    var basicPay = (SALARY_MATRIX[driverType] || {})[workingHours];
+    if (basicPay) oppFields.push({ id: 'P6e68fCc9LBlIBDSafM8', field_value: basicPay }); // Basic Pay
+
     if (isCare) {
       oppFields.push({ id: 'GqmWeQEebIpk6pab9Ymr', field_value: carePlan });                                  // Care Plan Tier
       if (monthlyMap[carePlan]) {
