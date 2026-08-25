@@ -293,12 +293,8 @@
     .hours-grid { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: end; }
     .hours-cell { display: flex; flex-direction: column; gap: 6px; }
     .hours-lbl { font-size: 11px; color: var(--gray2); text-transform: uppercase; letter-spacing: 0.04em; }
-    input.hours-time { color-scheme: dark; cursor: pointer; }
     .hours-result { min-width: 128px; }
     .hours-val { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.35); border-radius: var(--radius); padding: 12px 16px; color: var(--amber); font-weight: 700; font-size: 15px; text-align: center; white-space: nowrap; }
-    .hours-inhouse { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--gray); font-weight: 500; margin-top: 12px; cursor: pointer; }
-    .hours-inhouse input { width: auto; cursor: pointer; }
-    .hours-inhouse strong { color: var(--white); }
     @media (max-width: 560px) { .hours-grid { grid-template-columns: 1fr 1fr; } .hours-result { grid-column: 1 / -1; } }
 
     /* AREA AUTOCOMPLETE */
@@ -838,18 +834,21 @@
           <div class="hours-grid">
             <div class="hours-cell">
               <span class="hours-lbl">Start time</span>
-              <input type="time" id="startTime" class="hours-time">
+              <select id="startTime" class="hours-time">
+                <option value="" disabled selected>Select start time</option>
+              </select>
             </div>
             <div class="hours-cell">
               <span class="hours-lbl">End time</span>
-              <input type="time" id="endTime" class="hours-time">
+              <select id="endTime" class="hours-time">
+                <option value="" disabled selected>Select end time</option>
+              </select>
             </div>
             <div class="hours-cell hours-result">
               <span class="hours-lbl">Total shift</span>
               <span class="hours-val" id="hoursTotalVal">&mdash;</span>
             </div>
           </div>
-          <label class="hours-inhouse"><input type="checkbox" id="inhouseChk"> Live-in / no fixed shift &mdash; <strong>In-house / Permanent</strong></label>
           <input type="hidden" id="workingHours" name="workingHours">
           <input type="hidden" id="shiftTiming" name="shiftTiming">
         </div>
@@ -1131,7 +1130,6 @@ onbType.addEventListener('change', function() {
 (function () {
   const startEl = document.getElementById('startTime');
   const endEl = document.getElementById('endTime');
-  const inhouseEl = document.getElementById('inhouseChk');
   const valEl = document.getElementById('hoursTotalVal');
   const whEl = document.getElementById('workingHours');
   const stEl = document.getElementById('shiftTiming');
@@ -1141,10 +1139,21 @@ onbType.addEventListener('change', function() {
     let h12 = h % 12; if (h12 === 0) h12 = 12;
     return h12 + ':' + String(m).padStart(2, '0') + ' ' + ap;
   }
-  function compute() {
-    if (inhouseEl.checked) {
-      valEl.textContent = 'In-house'; whEl.value = 'In-house / Permanent'; stEl.value = 'In-house / Permanent'; return;
+  // Populate both dropdowns with every half-hour slot starting at 12:00 AM (00:00) — a plain
+  // <select> always opens at the top of its list, unlike the native time-picker's "jump to
+  // the current time" behaviour.
+  [startEl, endEl].forEach(function (sel) {
+    for (let mins = 0; mins < 24 * 60; mins += 30) {
+      const hh = String(Math.floor(mins / 60)).padStart(2, '0');
+      const mm = String(mins % 60).padStart(2, '0');
+      const t = hh + ':' + mm;
+      const opt = document.createElement('option');
+      opt.value = t;
+      opt.textContent = fmt(t);
+      sel.appendChild(opt);
     }
+  });
+  function compute() {
     const s = startEl.value, e = endEl.value;
     if (!s || !e) { valEl.textContent = '—'; whEl.value = ''; stEl.value = ''; return; }
     const [sh, sm] = s.split(':').map(Number);
@@ -1157,13 +1166,8 @@ onbType.addEventListener('change', function() {
     whEl.value = bucket + ' Hours';
     stEl.value = fmt(s) + ' – ' + fmt(e);
   }
-  startEl.addEventListener('input', compute);
-  endEl.addEventListener('input', compute);
-  inhouseEl.addEventListener('change', function () {
-    startEl.disabled = endEl.disabled = this.checked;
-    if (this.checked) { startEl.value = ''; endEl.value = ''; }
-    compute();
-  });
+  startEl.addEventListener('change', compute);
+  endEl.addEventListener('change', compute);
 })();
 
 // FORM SUBMISSION
@@ -1199,7 +1203,7 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
   }
   const startTimeVal = fmt12(document.getElementById('startTime').value);
   const endTimeVal = fmt12(document.getElementById('endTime').value);
-  if (!workingHours) { btn.disabled = false; btn.innerHTML = btnHtml; alert('Please set the working hours — pick a start & end time, or tick In-house / Permanent.'); return; }
+  if (!workingHours) { btn.disabled = false; btn.innerHTML = btnHtml; alert('Please set the working hours — pick a start & end time.'); return; }
   const driverType = data.get('driverType');
   const onboardingType = data.get('onboardingType') || '';
   const startDate = data.get('startDate') || '';
