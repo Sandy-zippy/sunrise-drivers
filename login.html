@@ -6,40 +6,89 @@
   <meta name="robots" content="noindex,nofollow">
   <title>Staff Portal — Sunrise Drivers</title>
   <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{ --bg:#09090B; --amber:#F59E0B; --gray2:#52525B; }
-    *{margin:0;padding:0;box-sizing:border-box;}
-    html,body{height:100%;background:var(--bg);overflow:hidden;}
-    /* Loading splash shown until the portal iframe finishes loading */
-    #loader{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--bg);z-index:2;transition:opacity .4s;}
-    #loader img{height:40px;margin-bottom:22px;}
-    .spinner{width:34px;height:34px;border:3px solid rgba(245,158,11,.2);border-top-color:var(--amber);border-radius:50%;animation:spin .8s linear infinite;}
-    @keyframes spin{to{transform:rotate(360deg);}}
-    #loader p{margin-top:18px;color:var(--gray2);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:13px;}
-    /* The portal, embedded so Google's app bar never shows and the URL stays on our domain */
-    iframe{position:fixed;inset:0;width:100%;height:100%;border:0;z-index:1;}
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #09090B; --bg2: #0F0F12; --bg3: #18181B; --bg4: #27272A;
+      --amber: #F59E0B; --amber2: #D97706; --amber-glow: rgba(245,158,11,0.15);
+      --white: #FAFAFA; --gray: #A1A1AA; --gray2: #52525B; --gray3: #71717A;
+      --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius: 12px; --radius-lg: 16px;
+    }
+    html, body { height: 100%; }
+    body {
+      font-family: var(--font); background: var(--bg); color: var(--white);
+      display: flex; flex-direction: column; align-items: center;
+      padding: 48px 20px; -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    .header { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-bottom: 44px; text-align: center; }
+    .header img { height: 34px; }
+    .header h1 { font-size: 22px; font-weight: 800; }
+    .header p { font-size: 14px; color: var(--gray); max-width: 380px; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; width: 100%; max-width: 720px; }
+    @media (max-width: 620px) { .grid { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--bg2); border: 1px solid var(--bg4); border-radius: var(--radius-lg);
+      padding: 24px; display: flex; flex-direction: column; gap: 10px;
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    }
+    .card:hover { border-color: var(--amber); background: var(--bg3); transform: translateY(-2px); }
+    .card .icon-wrap {
+      width: 42px; height: 42px; border-radius: 10px; background: var(--amber-glow);
+      border: 1px solid rgba(245,158,11,0.25); display: flex; align-items: center; justify-content: center;
+    }
+    .card .icon-wrap svg { width: 22px; height: 22px; color: var(--amber); }
+    .card h2 { font-size: 16px; font-weight: 700; }
+    .card p { font-size: 13px; color: var(--gray); line-height: 1.5; }
+    .card .go { font-size: 12px; font-weight: 600; color: var(--amber); display: flex; align-items: center; gap: 5px; margin-top: 4px; }
+    .card .go svg { width: 13px; height: 13px; transition: transform 0.2s; }
+    .card:hover .go svg { transform: translateX(3px); }
+    .footer-link { margin-top: 36px; font-size: 13px; color: var(--gray3); }
+    .footer-link a { color: var(--gray); font-weight: 600; }
+    .footer-link a:hover { color: var(--amber); }
   </style>
 </head>
 <body>
-  <div id="loader">
+  <div class="header">
     <img src="assets/logo.png" alt="Sunrise Drivers">
-    <div class="spinner"></div>
-    <p>Loading the staff portal…</p>
+    <h1>Staff Portal</h1>
+    <p>Everything the team needs, in one place.</p>
   </div>
-  <iframe
-    id="portal"
-    title="Sunrise Drivers Staff Portal"
-    src="https://script.google.com/macros/s/AKfycbxrvooGslCcUBOAQHoa_GPfGVIpc1BdMm0eEFLSQ3yZa_z2wLsqwUXT7ZkLxeuWMFDUwg/exec"
-    allow="clipboard-read; clipboard-write"></iframe>
-  <script>
-    var f = document.getElementById('portal');
-    var loader = document.getElementById('loader');
-    f.addEventListener('load', function(){
-      loader.style.opacity = '0';
-      setTimeout(function(){ loader.style.display = 'none'; }, 400);
-    });
-    // Safety: hide the loader after 6s even if the load event is swallowed
-    setTimeout(function(){ loader.style.opacity='0'; setTimeout(function(){loader.style.display='none';},400); }, 6000);
-  </script>
+
+  <div class="grid">
+    <a class="card" href="https://app.gohighlevel.com/" target="_blank" rel="noopener">
+      <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <h2>CRM (GoHighLevel)</h2>
+      <p>Clients, stages, WhatsApp — the full customer record.</p>
+      <span class="go">Open CRM <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+    </a>
+
+    <a class="card" href="portal.html">
+      <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <h2>Attendance Portal</h2>
+      <p>Upload PagarBook reports, manage driver records.</p>
+      <span class="go">Open portal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+    </a>
+
+    <a class="card" href="https://sitedev.sunrisedrivers.com/manager/login" target="_blank" rel="noopener">
+      <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+      <h2>Driver Information</h2>
+      <p>Research and look up individual driver records.</p>
+      <span class="go">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+    </a>
+
+    <a class="card" href="guide.html">
+      <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+      <h2>How It Works</h2>
+      <p>A walkthrough of the whole system, stage by stage.</p>
+      <span class="go">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+    </a>
+  </div>
+
+  <div class="footer-link"><a href="index.html">&larr; Back to caresunrisedrivers.com</a></div>
 </body>
 </html>
